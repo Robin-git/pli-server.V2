@@ -11,7 +11,7 @@ func InitMariaDB() *gorm.DB {
 		panic(err)
 	}
 	db.SingularTable(true)
-	return db
 	// db.AutoMigrate(&models.User{})
 	// defer db.Close()
+	return db
 }
