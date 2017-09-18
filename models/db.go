@@ -5,14 +5,18 @@ import (
 )
 
 // InitMariaDB return connection to mariadb gloo
-func InitMariaDB() *Service {
-	db, err := gorm.Open("mysql", "root:admin@/gloo_dev?charset=utf8&parseTime=True&loc=Local")
+func InitMariaDB(c string) *Service {
+	db, err := gorm.Open("mysql", c)
 	if err != nil {
 		panic(err)
 	}
 	db.SingularTable(true)
-	// db.AutoMigrate(&models.User{})
-	// defer db.Close()
+
+	// All Migration
+	db.AutoMigrate(User{})
+	db.AutoMigrate(Role{})
+	db.AutoMigrate(Etablishment{})
+
 	return &Service{
 		DB: db,
 	}

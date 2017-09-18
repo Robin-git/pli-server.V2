@@ -9,19 +9,36 @@ type User struct {
 	gorm.Model
 	FirstName string
 	LastName  string
-	Email     string
+	Email     string `gorm:"not null"`
+	Role      Role   `gorm:"ForeignKey:RoleID"`
+	RoleID    uint
 }
 
 // GetUsers find all User
-func (s *Service) GetUsers() []User {
+func (s *Service) GetUsers() ([]User, error) {
 	var users []User
-	s.DB.Find(&users)
-	return users
+	err := s.DB.Find(&users).Error
+	if err != nil {
+		return []User{}, err
+	}
+	return users, nil
 }
 
 // GetUser find one User
-func (s *Service) GetUser(id int) User {
+func (s *Service) GetUser(id int) (User, error) {
 	var user User
-	s.DB.First(&user, id)
-	return user
+	err := s.DB.First(&user, id).Error
+	if err != nil {
+		return User{}, err
+	}
+	return user, nil
+}
+
+// GetUser find one User
+func (s *Service) AddUser(u *User) error {
+	err := s.DB.Create(u).Error
+	if err != nil {
+		return err
+	}
+	return nil
 }
