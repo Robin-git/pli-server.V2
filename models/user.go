@@ -1,8 +1,6 @@
 package models
 
 import (
-	"fmt"
-
 	"github.com/jinzhu/gorm"
 )
 
@@ -15,8 +13,15 @@ type User struct {
 }
 
 // GetUsers find all User
-func (s *Service) GetUsers() {
+func (s *Service) GetUsers() []User {
 	var users []User
 	s.DB.Find(&users)
-	fmt.Println(users)
+	return users
+}
+
+// GetUser find one User
+func (s *Service) GetUser(id int) User {
+	var user User
+	s.DB.First(&user, id)
+	return user
 }
