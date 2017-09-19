@@ -8,7 +8,7 @@ https.get(URL, (res) => {
         // let json = JSON.stringify(data)
         // let bars = bufferOriginal.toString('utf8')
         // console.log(data)
-        let buf = Buffer.concat([data], data.length);
+        let buf = Buffer.from([data], data.length);
         let json = JSON.stringify(buf)
         console.log(json)
         // console.log(allBar['results'])
