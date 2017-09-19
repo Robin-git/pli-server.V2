@@ -2,6 +2,8 @@ package models
 
 import (
 	"github.com/jinzhu/gorm"
+	// Dialect for mysql
+	_ "github.com/jinzhu/gorm/dialects/mysql"
 )
 
 // InitMariaDB return connection to mariadb gloo

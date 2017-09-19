@@ -47,15 +47,10 @@ func (c *Controller) HandlerGetUser(w http.ResponseWriter, r *http.Request) {
 
 // HandlerAddUser post a new User
 func (c *Controller) HandlerAddUser(w http.ResponseWriter, r *http.Request) {
-	res, err := c.Service.GetUsers()
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusNotFound)
-		return
-	}
-	users, err := json.Marshal(res)
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-		return
-	}
-	w.Write(users)
+	w.WriteHeader(http.StatusNotFound)
+}
+
+// HandlerDelUser post a new User
+func (c *Controller) HandlerDelUser(w http.ResponseWriter, r *http.Request) {
+	w.WriteHeader(http.StatusNotFound)
 }
