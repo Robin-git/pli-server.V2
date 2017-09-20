@@ -11,7 +11,7 @@ func NewRouter() *mux.Router {
 	// MariaDB is database of gloo app
 	MariaDB := &SQLConnection{
 		Login:    "root",
-		Password: "admin",
+		Password: "",
 		Database: "gloo",
 	}
 	service := MariaDB.GetConnection()

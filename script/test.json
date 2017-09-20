@@ -1,0 +1,857 @@
+{
+    "html_attributions": [],
+    "results": [
+        {
+            "formatted_address": "114 Rue de Sours, 28000 Chartres, France",
+            "geometry": {
+                "location": {
+                    "lat": 48.4376139,
+                    "lng": 1.5218373
+                },
+                "viewport": {
+                    "northeast": {
+                        "lat": 48.4391211802915,
+                        "lng": 1.523481730291502
+                    },
+                    "southwest": {
+                        "lat": 48.4364232197085,
+                        "lng": 1.520783769708498
+                    }
+                }
+            },
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png",
+            "id": "a46649c038243568566428ee99fcf07e7894eb9a",
+            "name": "La Criée",
+            "opening_hours": {
+                "open_now": false,
+                "weekday_text": []
+            },
+            "photos": [
+                {
+                    "height": 2988,
+                    "html_attributions": [
+                        "\u003ca href=\"https://maps.google.com/maps/contrib/107959786642224092696/photos\"\u003eHaru yuki\u003c/a\u003e"
+                    ],
+                    "photo_reference": "CmRaAAAAXogF9RMxXuQKRwA7gApo1FZnGdijp8rmkCp0HxVBLyzkVeSgCxSDfJX3o9Z_hQSjTHgWen1nqLxVBypPl6YGY_t3vXM_XEwW7N9nWs3FQ9IYMcbxkSDXfaMLFlhLWtg6EhAZn-50K8DfY3CUVJXC53u7GhTjJI2D498wFhbxio9ehwADvW5K3A",
+                    "width": 5312
+                }
+            ],
+            "place_id": "ChIJA3pzVb0N5EcRPdeC9HfvFCA",
+            "rating": 3.8,
+            "reference": "CmRRAAAANkbcCz-IUS3pn0NfhPbHEYpS2XeFIbCg5A6qL8LUyKt7VoxI7DqipJYX_tt34hi4BRV9KWbVB-X7pB5SA42kcaDwyKQOyMsyrds0-JibH6Ev54Psm8jM4SgUDWnml5nxEhD8PkyaZWrQ6XDePHbY_eQ6GhRG6lFX76bamWEiEa7AYxJuUw3JoA",
+            "types": [
+                "restaurant",
+                "bar",
+                "food",
+                "point_of_interest",
+                "establishment"
+            ]
+        },
+        {
+            "formatted_address": "2 Rue du Faubourg la Grappe, 28000 Chartres, France",
+            "geometry": {
+                "location": {
+                    "lat": 48.4446993,
+                    "lng": 1.4969555
+                },
+                "viewport": {
+                    "northeast": {
+                        "lat": 48.4460893802915,
+                        "lng": 1.498374630291502
+                    },
+                    "southwest": {
+                        "lat": 48.4433914197085,
+                        "lng": 1.495676669708498
+                    }
+                }
+            },
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png",
+            "id": "6b3a80b2253b5b6c4237265881cbd32bfa369705",
+            "name": "Au Royal de Chartres",
+            "opening_hours": {
+                "open_now": false,
+                "weekday_text": []
+            },
+            "photos": [
+                {
+                    "height": 3000,
+                    "html_attributions": [
+                        "\u003ca href=\"https://maps.google.com/maps/contrib/101231856718712531366/photos\"\u003e姚慶海\u003c/a\u003e"
+                    ],
+                    "photo_reference": "CmRaAAAAEDOTAA_K5ZeRGmwWrUDJfkaTaqwsyb8QIiL7pR80GBeuuHeYrv_iRqtP8Ks8MkTLU2RrBtIgW7oRR0sdp4MQpci09WxAcxG3XfqQHm9Ze0W-xHYuoXR1MsigToMtgdTJEhBry5k-hQ-HTNE9pt8uyQ5zGhTY6jeNpILX0l4UrCTPT24fJndNsA",
+                    "width": 4000
+                }
+            ],
+            "place_id": "ChIJEYThaksM5EcRFiZ5fbnbpmc",
+            "rating": 4,
+            "reference": "CmRRAAAAbVSczbFLx0M2EnzzTYPZK4N6JTMc6WWIwT0SIghE6loSBkDO_jYKudy6f2QHUMqhwdjtFqDjekJj7Yq8FHhkP66yAG3gxOJimYU2Ia8CK2Fk2OJFFcHwWg3dfFUdi35TEhDHx8chcNJ3Y5j0bCIaHoqiGhTxQal2rjOodSlw3pRxi2b47NeKdQ",
+            "types": [
+                "restaurant",
+                "bar",
+                "food",
+                "point_of_interest",
+                "establishment"
+            ]
+        },
+        {
+            "formatted_address": "1 Rue de la Porte Guillaume, 28000 Chartres, France",
+            "geometry": {
+                "location": {
+                    "lat": 48.4471009,
+                    "lng": 1.4921534
+                },
+                "viewport": {
+                    "northeast": {
+                        "lat": 48.4483954802915,
+                        "lng": 1.493524030291502
+                    },
+                    "southwest": {
+                        "lat": 48.4456975197085,
+                        "lng": 1.490826069708498
+                    }
+                }
+            },
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png",
+            "id": "9f4e967e7d15801072f2c25484bdc223e99befd5",
+            "name": "Restaurant L'Estocade",
+            "opening_hours": {
+                "open_now": false,
+                "weekday_text": []
+            },
+            "photos": [
+                {
+                    "height": 2448,
+                    "html_attributions": [
+                        "\u003ca href=\"https://maps.google.com/maps/contrib/113448182902409685023/photos\"\u003eJordan RENULT\u003c/a\u003e"
+                    ],
+                    "photo_reference": "CmRaAAAAFPkSGw8c0w-mPEMRps4t_8s-jI95k8815niF5n7widVVtiKGOl8C1s8QnQJorOkj-GgpkfxYEWFlDMUlhspwKvOSKRrGIbDqwOuLOhZCMrOjEBGCrr8nVIjobpE2Y0VSEhAsDrkYhNVC_Jnm_ygBLDBkGhTdSehWjsD8OGs6111VMCmliqp-DQ",
+                    "width": 3264
+                }
+            ],
+            "place_id": "ChIJxxCuhEkM5EcRE_JF6Zp0NE8",
+            "rating": 4.5,
+            "reference": "CmRRAAAAwCegycDKTryLAogxYYkAr7OIT6txVTIroK49NtMonSTRXngXFLAcpBUSSH7P-E9HnBeqQNIucPkWyX57ms9G5Duom3YNHZO7wBHqczyN5mEWSuB2mNv52x-w_YytMy6LEhB_5cYH9yx3K7UpCltj2l9UGhR_uw_juPacSP2S5xkf9-ovJanOYw",
+            "types": [
+                "bar",
+                "restaurant",
+                "food",
+                "point_of_interest",
+                "establishment"
+            ]
+        },
+        {
+            "formatted_address": "1 Avenue Jehan de Beauce, 28000 Chartres, France",
+            "geometry": {
+                "location": {
+                    "lat": 48.44706000000001,
+                    "lng": 1.482961
+                },
+                "viewport": {
+                    "northeast": {
+                        "lat": 48.4484607302915,
+                        "lng": 1.484376380291502
+                    },
+                    "southwest": {
+                        "lat": 48.4457627697085,
+                        "lng": 1.481678419708498
+                    }
+                }
+            },
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png",
+            "id": "16c7193435689e981bdf1d56fd71caf047d56bf8",
+            "name": "Babylone Gare",
+            "opening_hours": {
+                "open_now": false,
+                "weekday_text": []
+            },
+            "photos": [
+                {
+                    "height": 2448,
+                    "html_attributions": [
+                        "\u003ca href=\"https://maps.google.com/maps/contrib/110641044877081881895/photos\"\u003eBabylone Gare\u003c/a\u003e"
+                    ],
+                    "photo_reference": "CmRaAAAAvK0e9CAfZQAO8bUpiixy_prpX6Oupvigelif47yNBZ9vPBlk9T2RRMogu7ZcxDZOfsMST6QtaeBYQ6AraWLUYLri_IK6H7Osv8UnVLW5t5Rhe4tP_UT-GT2_ROBoKNFTEhAQdOki5UCyb9alXevuaPx0GhS2N4zpUJlXmFRqn1NWGpBciVMwrg",
+                    "width": 3264
+                }
+            ],
+            "place_id": "ChIJZ9z2IUcM5EcRJlpr2ZT3M2E",
+            "rating": 5,
+            "reference": "CmRRAAAAho7NyBYZ4nF82Cv-2e1SpsFBzTMxdSMNy92Bf92kMY_45eqoCb1BvhUI9oQ0XU91r143tX3eRrD1SqC-PIZsLam5-4s9jLswyN8lRMf-VKE9vMpUR1j2r0vRx7ywI_0OEhC9njnjjU7uEtcfRiuVkM9xGhRFWvXP08wLOnMyAsDBhXXMH9szow",
+            "types": [
+                "cafe",
+                "bar",
+                "restaurant",
+                "food",
+                "store",
+                "point_of_interest",
+                "establishment"
+            ]
+        },
+        {
+            "formatted_address": "5 Rue d'Allonnes, 28000 Chartres, France",
+            "geometry": {
+                "location": {
+                    "lat": 48.43704020000001,
+                    "lng": 1.5048054
+                },
+                "viewport": {
+                    "northeast": {
+                        "lat": 48.4383682802915,
+                        "lng": 1.506117680291502
+                    },
+                    "southwest": {
+                        "lat": 48.4356703197085,
+                        "lng": 1.503419719708498
+                    }
+                }
+            },
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png",
+            "id": "3665e80f43a15f4cd07a3f2d7460ae72ed6e77a3",
+            "name": "Laperrousaz Jérome",
+            "place_id": "ChIJJQsjXa4N5EcRbMBBAvfC56A",
+            "rating": 4.7,
+            "reference": "CmRSAAAAaDhRL57rOd28GnqOPUZ8e9Jp0C2xOexdPy9WsZd0DvPw2-cU1iiJ80m_sMo5tb1P8ltO4o97A7-X7T4793pRfILkmyPQXYZiS90EKCCF9rOUkqwAJhjT1p0G3vQFIGbnEhDRHqlRr-wvSUxa_PUi_I2qGhRarMaSi1N-qmgZnJQO5OjKXxhoMA",
+            "types": [
+                "restaurant",
+                "bar",
+                "food",
+                "point_of_interest",
+                "establishment"
+            ]
+        },
+        {
+            "formatted_address": "38 Rue du Général George Patton, 28000 Chartres, France",
+            "geometry": {
+                "location": {
+                    "lat": 48.44152219999999,
+                    "lng": 1.4743909
+                },
+                "viewport": {
+                    "northeast": {
+                        "lat": 48.4428348302915,
+                        "lng": 1.475764380291502
+                    },
+                    "southwest": {
+                        "lat": 48.4401368697085,
+                        "lng": 1.473066419708498
+                    }
+                }
+            },
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png",
+            "id": "2602bfaab66f7dd0f63b17b171c1383f53507090",
+            "name": "Le Mathilda",
+            "photos": [
+                {
+                    "height": 1536,
+                    "html_attributions": [
+                        "\u003ca href=\"https://maps.google.com/maps/contrib/112432934944900605699/photos\"\u003eMichel Gouin\u003c/a\u003e"
+                    ],
+                    "photo_reference": "CmRaAAAA_KleoaNGwrYJ9jQFgKyMCF3ayjrG3AbfMNHFXfl8FetfnWjksHnT4IPtCD43DmxwalR17ntxJhutyviTx_mh2_6NcSLDCzpleCdAJ6Azrhm15VsdsfkjdWdcNnS3XEJIEhBE0JBKl1djW5z6NHo4ZPeMGhSpeBpxssjmTX5_SsgtsQQBFfXMTA",
+                    "width": 2048
+                }
+            ],
+            "place_id": "ChIJoSQoTGgM5EcR19QN_nFJA0c",
+            "rating": 4.8,
+            "reference": "CmRRAAAATS8axSMHyxTZEfDpgoZ9ds2fdU2d_xsaBD-_OHSHJN0awG_pimlEChvQ-5WVG18F8P-mDKmhSVotDsau4VIKatoN51oz9VF_lXEzX4RL6vCYW9wlFiawhUmqqhV5rl7SEhAmAK6QPrBNRig3RWXkqNr3GhT5r-FGmPqj5nRaTV_xDXDuhuS2VA",
+            "types": [
+                "restaurant",
+                "bar",
+                "food",
+                "point_of_interest",
+                "establishment"
+            ]
+        },
+        {
+            "formatted_address": "13 Rue Sainte-Même, 28000 Chartres, France",
+            "geometry": {
+                "location": {
+                    "lat": 48.4461406,
+                    "lng": 1.4858966
+                },
+                "viewport": {
+                    "northeast": {
+                        "lat": 48.44753203029151,
+                        "lng": 1.487328930291502
+                    },
+                    "southwest": {
+                        "lat": 48.44483406970851,
+                        "lng": 1.484630969708498
+                    }
+                }
+            },
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png",
+            "id": "4f920d8e3aa7548791d4727ed3fc298784b277c7",
+            "name": "Punjab",
+            "opening_hours": {
+                "open_now": false,
+                "weekday_text": []
+            },
+            "photos": [
+                {
+                    "height": 1836,
+                    "html_attributions": [
+                        "\u003ca href=\"https://maps.google.com/maps/contrib/102721799258244487171/photos\"\u003ero ba\u003c/a\u003e"
+                    ],
+                    "photo_reference": "CmRaAAAAVVxDuR53YLV-owaXjmOb8mzUYfujgLykdRGP2Gz4MWIaIf9sCm8Q4lGj-HZZGFSD5bUC4vaOavv6y3fz62SBe_01IJiN7osZiyXglc0QNCcFZTTIqsB282uPaDtXdXm2EhByw72MEe282LjGmjyI66_QGhSKXvpl0UaXvsPBc5GE7r55mntLIA",
+                    "width": 3264
+                }
+            ],
+            "place_id": "ChIJc3NnI0YM5EcRS9G6vYyShoI",
+            "rating": 4.1,
+            "reference": "CmRSAAAAksfC8V9lL20cymcvbuImbdsrr5KwTRCy91Wc5TikulDQ82Wzf56HfDAV4eC-wRnBSv2Eef9y-zNk1Cf_-yiVSkLCgc0FQFngtyNiyIZaGLhrOjXSxyoO-Z-H2YWl6WxYEhCFH-bB4kwwmsbowGNpY91JGhQ98CsOEc8dIs9xBdvIaM8Oi2Qjng",
+            "types": [
+                "bar",
+                "restaurant",
+                "food",
+                "point_of_interest",
+                "establishment"
+            ]
+        },
+        {
+            "formatted_address": "13 Rue Général Koenig, 28000 Chartres, France",
+            "geometry": {
+                "location": {
+                    "lat": 48.4454223,
+                    "lng": 1.4827262
+                },
+                "viewport": {
+                    "northeast": {
+                        "lat": 48.4468057802915,
+                        "lng": 1.484159930291502
+                    },
+                    "southwest": {
+                        "lat": 48.4441078197085,
+                        "lng": 1.481461969708498
+                    }
+                }
+            },
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png",
+            "id": "97ad70dfed02250e17ec9b5db8658b8e7566d09b",
+            "name": "Kyotori",
+            "opening_hours": {
+                "open_now": false,
+                "weekday_text": []
+            },
+            "photos": [
+                {
+                    "height": 900,
+                    "html_attributions": [
+                        "\u003ca href=\"https://maps.google.com/maps/contrib/108249134080742554717/photos\"\u003eKyotori\u003c/a\u003e"
+                    ],
+                    "photo_reference": "CmRaAAAABM0gzE8VpE5ALWUuR95CB1_kreldxMUZ-hkQrzYFfvqD6tK5tYK4-c6Sto4ietblypP9_UuUDUQdS0-AloojnzPaiuzSBAhxQYO2VLOAvwrbBX77_DmVs5ys_jjjEbYJEhBA5xycICrZ_eDOP131FVvKGhTZrTzjvaixg-bDXSY5f_9PFv7yjw",
+                    "width": 1200
+                }
+            ],
+            "place_id": "ChIJD6FEx0YM5EcRHWkhzO07BUw",
+            "rating": 4.3,
+            "reference": "CmRRAAAAcJm57PSfVzba5Nw_L9svR7R1M6WWNnR_FHWqDRfZp63iGpbj1WSvStt95nZ_0924TSV1m4V39HoB-gW_4p93oGilFdXtOPN3JKjR4IgA1BOoeBH1OWvnRE3PBJX4Tm5MEhCVBo3bhl8thC716jK7-aKRGhRO3vX9HLA9BIJeGUulZPryNLlzpw",
+            "types": [
+                "cafe",
+                "bar",
+                "restaurant",
+                "food",
+                "point_of_interest",
+                "establishment"
+            ]
+        },
+        {
+            "formatted_address": "18 Boulevard Adelphe Chasles, 28000 Chartres, France",
+            "geometry": {
+                "location": {
+                    "lat": 48.44268359999999,
+                    "lng": 1.4872134
+                },
+                "viewport": {
+                    "northeast": {
+                        "lat": 48.44402418029149,
+                        "lng": 1.488621980291502
+                    },
+                    "southwest": {
+                        "lat": 48.4413262197085,
+                        "lng": 1.485924019708498
+                    }
+                }
+            },
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png",
+            "id": "667d5f04c333d6ee91175006d9ceac30a5d242f9",
+            "name": "Il Teatro",
+            "photos": [
+                {
+                    "height": 2988,
+                    "html_attributions": [
+                        "\u003ca href=\"https://maps.google.com/maps/contrib/113385793751283763363/photos\"\u003eBrigitte Lortie\u003c/a\u003e"
+                    ],
+                    "photo_reference": "CmRaAAAAM_Rj6vbgEhiO6HEKQCXRQP_sZfWnvq0iSI5b0WcAt_KjuEcFHgCnKQ2H_CkXrcjR7uUbw39FptaVwHX-qFvMK9ROze78GH7Nq0heZ90dFu8IEbbqDBaJbJxIn_o6RlTyEhATz4tn3yve4lOEsvzfmBzGGhTQQhSOF10M15C_5ulKj0Vmbsgm0g",
+                    "width": 5312
+                }
+            ],
+            "place_id": "ChIJd6wvYk8M5EcRak3ZeZzv5_4",
+            "rating": 3.8,
+            "reference": "CmRSAAAAoscq66FVKa_BomlMNSkyka3NnOH2J6J1V-mV_RLSdi0aXNdlOI85uvLBvVyIPeDBoheVwf-uw55K6Fr-p_zk3QMCLF-oIF6wFoArCNyIhyzhrgi2HWQJ292JEcSwIJoYEhDe_0XDUCSj-ToKEiSJDAGyGhSema26rh5P6SXUiyIiSpaenxQxBw",
+            "types": [
+                "bar",
+                "restaurant",
+                "food",
+                "point_of_interest",
+                "establishment"
+            ]
+        },
+        {
+            "formatted_address": "16 Place du Cygne, 28000 Chartres, France",
+            "geometry": {
+                "location": {
+                    "lat": 48.445585,
+                    "lng": 1.487208
+                },
+                "viewport": {
+                    "northeast": {
+                        "lat": 48.44685223029149,
+                        "lng": 1.488406580291502
+                    },
+                    "southwest": {
+                        "lat": 48.4441542697085,
+                        "lng": 1.485708619708498
+                    }
+                }
+            },
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png",
+            "id": "cc08c0506f91a31134fe62948a2da16bc63d40f3",
+            "name": "Roma Nostra",
+            "opening_hours": {
+                "open_now": false,
+                "weekday_text": []
+            },
+            "photos": [
+                {
+                    "height": 2268,
+                    "html_attributions": [
+                        "\u003ca href=\"https://maps.google.com/maps/contrib/108985979845691454215/photos\"\u003ewilfrid CHT\u003c/a\u003e"
+                    ],
+                    "photo_reference": "CmRaAAAAdnjGccQ7g0oDx5l0U2srBNZYq9T2pIWvfXBXwJ2-ergkaj-ylpaiWFsLC8py9BLrkZDX4iI_gYxf3cVbHhZ7ffivguoZvN7Ty7vLwxro-LNE488skUl3oMNx3XlSUvmPEhCE-7g46ZNQnCkTbyxQqSQ-GhTcWHYKWEZKTkCSkaKwe8HP-wiSeQ",
+                    "width": 4032
+                }
+            ],
+            "place_id": "ChIJp9MwH0YM5EcRZOH1P9_V3AM",
+            "rating": 3.2,
+            "reference": "CmRRAAAA_lu-1bIHA3VvIasb66VtliJdriGB5MZXoKyjT-ge9OBFMP4-SYi1cCmxlbMJPRmovr8bDZnIMhaM3fxwZ4oCaeJIscwI8NhEHxL9klNUYEBJTZicLasgkxbiNxf2wCgOEhD9Ba_hEBlLYuSwbTXQoNh6GhSC0eNP4y0woBWlZFuL7o7n3PECzg",
+            "types": [
+                "bar",
+                "restaurant",
+                "food",
+                "point_of_interest",
+                "establishment"
+            ]
+        },
+        {
+            "formatted_address": "26 Rue du Grand Faubourg, 28000 Chartres, France",
+            "geometry": {
+                "location": {
+                    "lat": 48.44388619999999,
+                    "lng": 1.4822043
+                },
+                "viewport": {
+                    "northeast": {
+                        "lat": 48.4452027802915,
+                        "lng": 1.483571030291502
+                    },
+                    "southwest": {
+                        "lat": 48.4425048197085,
+                        "lng": 1.480873069708498
+                    }
+                }
+            },
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png",
+            "id": "3e0d88c23a55bcd859b192767f0379c4cb77a990",
+            "name": "Nouvel Orient",
+            "place_id": "ChIJ829zBEQM5EcRuA2P77p7qBs",
+            "rating": 4.7,
+            "reference": "CmRRAAAATk6RA4dZyVU7O8806CM1L9C0ACPwgDZLMvShhFFZ4bW2e_hBrNKm2_P36OplvLuHhpMu_v_7fI8D2of3Si-jG50Kk0i-L2YKv-txK8xEL-eX-C7gcvSlLIuY7khcD57kEhBsdn-hQd7SdnMDGU-RDrEQGhS-_EqYL1J8M_QQZUj9g1-ie3wryQ",
+            "types": [
+                "restaurant",
+                "bar",
+                "food",
+                "point_of_interest",
+                "establishment"
+            ]
+        },
+        {
+            "formatted_address": "8 Rue de la Barrière, 28630 Ver-lès-Chartres, France",
+            "geometry": {
+                "location": {
+                    "lat": 48.3846064,
+                    "lng": 1.477525
+                },
+                "viewport": {
+                    "northeast": {
+                        "lat": 48.3859521302915,
+                        "lng": 1.478933580291502
+                    },
+                    "southwest": {
+                        "lat": 48.38325416970851,
+                        "lng": 1.476235619708498
+                    }
+                }
+            },
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/bar-71.png",
+            "id": "e63e05c5e7cb4f99a232f9b9093f662348f9a471",
+            "name": "Le Gallus",
+            "opening_hours": {
+                "open_now": true,
+                "weekday_text": []
+            },
+            "photos": [
+                {
+                    "height": 4032,
+                    "html_attributions": [
+                        "\u003ca href=\"https://maps.google.com/maps/contrib/117818284809519820268/photos\"\u003eBrice Hillion\u003c/a\u003e"
+                    ],
+                    "photo_reference": "CmRaAAAA7mc2TZ800nJ7tjlA2s8v6ikAWnd8DHGE0jciONQKbX4QOtAiVDMLQtd8MN5_XEhTe75op9RvGSLPu-sHerP8QSNr-neQpkMr_ksnjgKKTI2DcZamM3O6CEUgDq79d6oSEhDDRr4-tvMu6LttSkMDKgEXGhSsccLlIjaXl5-Tv9INFIUlqy5XAw",
+                    "width": 3024
+                }
+            ],
+            "place_id": "ChIJ-zbeHjRz5EcRrlhXbulLnHU",
+            "rating": 4.8,
+            "reference": "CmRRAAAAe1nRKMS66YlZ-OfeO7gSnlRyB18MN7FRaZJeeDjm1a5uLl-giyg-ldFyezT-iRwZ_DWu_634KSffKzZcITWxsxi5LzZ9OyxJzGWkKuQxX53y1u3rPBB53GpnJUJVc96wEhCVuXk4QGOJVFXVT-_mUm_zGhQPsXEo2feqrHb41FVi22D4izKNAQ",
+            "types": [
+                "bar",
+                "restaurant",
+                "food",
+                "point_of_interest",
+                "establishment"
+            ]
+        },
+        {
+            "formatted_address": "22 Rue de la Porte Guillaume, 28000 Chartres, France",
+            "geometry": {
+                "location": {
+                    "lat": 48.4469043,
+                    "lng": 1.4930905
+                },
+                "viewport": {
+                    "northeast": {
+                        "lat": 48.4482804802915,
+                        "lng": 1.494438680291502
+                    },
+                    "southwest": {
+                        "lat": 48.4455825197085,
+                        "lng": 1.491740719708498
+                    }
+                }
+            },
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png",
+            "id": "22853c8d66077b61acb6dab03fbab072396fc847",
+            "name": "Villette Sebastien",
+            "place_id": "ChIJ8UVeKUoM5EcRZRcKbCwYXls",
+            "rating": 4.5,
+            "reference": "CmRRAAAArxDvzFPBsG3as6oxj9H_9QoQPhuugPz6vet7yMs4LN6JVic5xGnKEUnBp-mR1OBg3v28CqIeAML-j03oScnciZXZ3rEMcqYFAqd94HJ_OAD6sZKWifrrAL7ZfrNO4CBiEhBWtDd0wTmCqT_JdOkeeJa9GhQCwO05dnOphUhfF2EGjR3Aa2rQpQ",
+            "types": [
+                "bar",
+                "restaurant",
+                "food",
+                "point_of_interest",
+                "establishment"
+            ]
+        },
+        {
+            "formatted_address": "5 ter Avenue Marcel Proust, 28000 Chartres, France",
+            "geometry": {
+                "location": {
+                    "lat": 48.4522968,
+                    "lng": 1.5301283
+                },
+                "viewport": {
+                    "northeast": {
+                        "lat": 48.4536714302915,
+                        "lng": 1.531675180291502
+                    },
+                    "southwest": {
+                        "lat": 48.4509734697085,
+                        "lng": 1.528977219708498
+                    }
+                }
+            },
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/lodging-71.png",
+            "id": "5f4e1a827fb70ad17322a2813d554ee14637dcf9",
+            "name": "HÔTEL NOVOTEL CHARTRES",
+            "opening_hours": {
+                "open_now": false,
+                "weekday_text": []
+            },
+            "photos": [
+                {
+                    "height": 2448,
+                    "html_attributions": [
+                        "\u003ca href=\"https://maps.google.com/maps/contrib/103876418098684982122/photos\"\u003eZéé da Fonseca\u003c/a\u003e"
+                    ],
+                    "photo_reference": "CmRaAAAAseZVdXQp11ZTkQ7T64FqNjRKrlw4-OGOCXBuUrHWRCyB8oHpY3z2m3gEiiWWH3jPWZFkJDwNtHOrrT6lNJ-PYddF7YOno_jga0LzBptWrE6NBmWP6MFV7mgo1WJYApysEhBK2b8H0XAVcO0zLqFFTA3vGhRenrVWCr2IqCr_9WiqbEhmhPn19A",
+                    "width": 3264
+                }
+            ],
+            "place_id": "ChIJF_3ovusN5EcRs0ko7Yz3_xY",
+            "rating": 4,
+            "reference": "CmRRAAAAQjuic3f4U0YCCD2NuueYQw4-QD2ht98vVc9Xde_K_qxDA5srEmHtyo97egAPySbl8vFy51tFZ_PXajmtLMdeEzuslT1yv9e0KYInn07pCM9qW23KcREFYn3dEVOjZzSnEhDN0jBFuKuGe1bNrcbtYs5AGhRoqUBxzL1bHZfkjmFL2OsSL4SCMw",
+            "types": [
+                "lodging",
+                "restaurant",
+                "food",
+                "point_of_interest",
+                "establishment"
+            ]
+        },
+        {
+            "formatted_address": "2 Avenue Joseph Pichard, 28000 Chartres, France",
+            "geometry": {
+                "location": {
+                    "lat": 48.448425,
+                    "lng": 1.51912
+                },
+                "viewport": {
+                    "northeast": {
+                        "lat": 48.4497739802915,
+                        "lng": 1.520468980291502
+                    },
+                    "southwest": {
+                        "lat": 48.4470760197085,
+                        "lng": 1.517771019708498
+                    }
+                }
+            },
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png",
+            "id": "97754be0e85c48d82c128bce402074dab210aad1",
+            "name": "Babylone Madeleine Kebab",
+            "opening_hours": {
+                "open_now": false,
+                "weekday_text": []
+            },
+            "photos": [
+                {
+                    "height": 936,
+                    "html_attributions": [
+                        "\u003ca href=\"https://maps.google.com/maps/contrib/105008196223303537605/photos\"\u003eBabylone Madeleine Kebab\u003c/a\u003e"
+                    ],
+                    "photo_reference": "CmRaAAAAiJHKO8O3qFr44npk34BHEh_Acx8imP-6a3JNINaR4T_-r_K0MccjNKzRRag9dRccmoG1fN_KxyVBzDawKTcS9DQjCSLUFPPqB2olxgkWmQIkOCeKH5iyuoCX_F0bid__EhC08PSOQ5NqN-7difIiKRwHGhQ06Lo39rUInjknTw9CcW5ArbAf1w",
+                    "width": 1404
+                }
+            ],
+            "place_id": "ChIJw_vzkL8N5EcRPIuwsiTNUoQ",
+            "rating": 4.7,
+            "reference": "CmRSAAAAAIh1121zCwQJl34C9Vxgs5ad77xnG9rZcC67Y-62YyYQK9rcsLd6atB6gQA5M0g0vegsS-6NSLQgetjTMrbz7pgdx-DJjYr4l8olO1FCVgHizNZznLytpdQYOcxj3l4WEhBuXj_r_ck2dl0Fzz1K_cwLGhS-av9v2JWeUD8G_bUXNMv8esUE0w",
+            "types": [
+                "cafe",
+                "bar",
+                "restaurant",
+                "food",
+                "store",
+                "point_of_interest",
+                "establishment"
+            ]
+        },
+        {
+            "formatted_address": "29 Boulevard Charles Péguy, 28000 Chartres, France",
+            "geometry": {
+                "location": {
+                    "lat": 48.44918479999999,
+                    "lng": 1.483076
+                },
+                "viewport": {
+                    "northeast": {
+                        "lat": 48.4504828802915,
+                        "lng": 1.484562530291502
+                    },
+                    "southwest": {
+                        "lat": 48.4477849197085,
+                        "lng": 1.481864569708498
+                    }
+                }
+            },
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/bar-71.png",
+            "id": "c623678ea25e6b4724f8d16024b32d9efdef7313",
+            "name": "Monguillon Emmanuel",
+            "place_id": "ChIJ6eqsWEcM5EcRCEXg2sVNn38",
+            "rating": 4,
+            "reference": "CmRRAAAALVHJJBG4PnYiEhmA0Qc4q9FxcVZvOMc2kkyDbv16EYzBOnSdCR3jNE2dTn9TeaxA61POpJ4eM-zDTRhNt73x3kNJ3are5TfSCwUWzHeNpkv5PrE-PNIGGc9SS_9ZidQnEhDadn7uY6RZ-dGlGgZvS1zGGhSctSPmRJSfs-XMsG8hrOz1oL3oIA",
+            "types": [
+                "bar",
+                "point_of_interest",
+                "establishment"
+            ]
+        },
+        {
+            "formatted_address": "Route de Gasville 8, RN 10 Le Bois Paris, 28630 Nogent-le-Phaye, France",
+            "geometry": {
+                "location": {
+                    "lat": 48.46163,
+                    "lng": 1.572566
+                },
+                "viewport": {
+                    "northeast": {
+                        "lat": 48.4629789802915,
+                        "lng": 1.573914980291502
+                    },
+                    "southwest": {
+                        "lat": 48.4602810197085,
+                        "lng": 1.571217019708498
+                    }
+                }
+            },
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/generic_business-71.png",
+            "id": "ac580047ad9d3cea1aca760e729824931d0f157f",
+            "name": "Bowling de Chartres",
+            "opening_hours": {
+                "open_now": false,
+                "weekday_text": []
+            },
+            "photos": [
+                {
+                    "height": 2448,
+                    "html_attributions": [
+                        "\u003ca href=\"https://maps.google.com/maps/contrib/101372517202338888546/photos\"\u003eBowling de Chartres\u003c/a\u003e"
+                    ],
+                    "photo_reference": "CmRaAAAAi2GZZVn0K5qUr7Ysl83fqI0-CmkNQjhjP1Q99MWR716zKgoVqUVhMDkqZ0IP-VVMPI3ZOqBNXTzeUJL_DabG9PqQOUAic3-5YLNbM3y-VBaoalAk6NZSxsacoTvaV8KJEhDER-tHWi7ZckmyQm3nyhMeGhQkuBelk01_b0TkhvRfaZa3sHnDnQ",
+                    "width": 3264
+                }
+            ],
+            "place_id": "ChIJBYPUahgS5EcRVdQZBasW1qc",
+            "rating": 4,
+            "reference": "CmRSAAAA5lDVWs_kWoXwoZmEprj-PRMpb3glvUx4Pk-nkDxQMxbudStZ0vntDZXBA7jvV2stdZl2UVfa3nlqN1y8RuLukL_Tlu_HSW8EQb9aPfQ95oYXQgDSIPyVe9Zdx3DMYrJwEhD89dDbX6M0L2B-CoUbqGfUGhQuZKQUfCcBgl6OE_HJvdhSGqPGSw",
+            "types": [
+                "bowling_alley",
+                "bar",
+                "point_of_interest",
+                "establishment"
+            ]
+        },
+        {
+            "formatted_address": "15 Rue de Chartres, 28630 Morancez, France",
+            "geometry": {
+                "location": {
+                    "lat": 48.39690999999999,
+                    "lng": 1.4928061
+                },
+                "viewport": {
+                    "northeast": {
+                        "lat": 48.39826018029149,
+                        "lng": 1.494208830291502
+                    },
+                    "southwest": {
+                        "lat": 48.39556221970849,
+                        "lng": 1.491510869708498
+                    }
+                }
+            },
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png",
+            "id": "64d181220ee8a8e9d6e21a4bdf02b966e6ae8f3c",
+            "name": "Restaurant le bergerac",
+            "opening_hours": {
+                "open_now": false,
+                "weekday_text": []
+            },
+            "photos": [
+                {
+                    "height": 3024,
+                    "html_attributions": [
+                        "\u003ca href=\"https://maps.google.com/maps/contrib/100316799838564243660/photos\"\u003eCédric Chauveau\u003c/a\u003e"
+                    ],
+                    "photo_reference": "CmRaAAAA5oqhIFm9O8FhhhFsu22eEw4CiHziQyIx9HqiJGokaBee-5cz7SFTfZFIwa0k__1nQ9CPqitUJDKTBLM-PcE6HUh_CixmpnzxJEvBLGHngOiUZ2537z10f-1Ps-VGegRQEhChcaclqPdD_Hy0kurJjtyaGhR9PxHCiq7gvGa4Nfc31r7zzvCNbg",
+                    "width": 4032
+                }
+            ],
+            "place_id": "ChIJc3bHANcM5EcRdCMcaryr3Uw",
+            "rating": 4.3,
+            "reference": "CmRRAAAAbpkc1-UP9SqPtUnUcepZoV02Ec5OMG6De0xeBUqPywcuA9wGsYch9zp7KtuXVDR-_Kn2yHIW_1CY8JptHnDisPDRrB9twP0ZJSxHPwtd4mevgv51EIashKud1MtCXCVrEhATONh0pPjP3uv8IgrXxpoOGhRU7OitCku6J-OGaTZ4xooWWwOy6A",
+            "types": [
+                "bar",
+                "restaurant",
+                "food",
+                "point_of_interest",
+                "establishment"
+            ]
+        },
+        {
+            "formatted_address": "60 Rue Jean Moulin, 28170 Châteauneuf-en-Thymerais, France",
+            "geometry": {
+                "location": {
+                    "lat": 48.57918859999999,
+                    "lng": 1.243844
+                },
+                "viewport": {
+                    "northeast": {
+                        "lat": 48.58058098029149,
+                        "lng": 1.245282230291502
+                    },
+                    "southwest": {
+                        "lat": 48.5778830197085,
+                        "lng": 1.242584269708498
+                    }
+                }
+            },
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/bar-71.png",
+            "id": "798baf1acfe482b87b1ecd796734a5bcb56fbf3b",
+            "name": "Bar Tabac de Chartres",
+            "photos": [
+                {
+                    "height": 4160,
+                    "html_attributions": [
+                        "\u003ca href=\"https://maps.google.com/maps/contrib/103710645028014743058/photos\"\u003esylvie.annick mosaub\u003c/a\u003e"
+                    ],
+                    "photo_reference": "CmRaAAAA_eKNEG7Dn9aeij_LgeG-S-NwUXYuqhB32iR52l8AgckdUTeJwGzI1YgroY5V90Fs08ZNoFXEWSfBVqZsBiomPgvRVxPlagOF1AItSkTQhm6Q1qk9BYDpmuWkbZw9fjxVEhBFyiRQxMl-cyEwplW7nB0EGhR_QoctebvjYYfdDUVXMu3Qzu2SHQ",
+                    "width": 3120
+                }
+            ],
+            "place_id": "ChIJefyUg1j640cRDhLSJUIpheI",
+            "rating": 2.8,
+            "reference": "CmRSAAAAM370eG91J3XhRwxAvkjxTBbUsEO1zpHoyqBWgkyXT9EIoTsjWGCaTj-UmC23l-sjuph7WPOsDNC1coYeltHwd5xsl111lVEemD1qjthZqDPUsyg8JqqJc5AZWDajssDuEhCg2qmdMIwwRyYIZaAaOD-eGhSOQDmHWMOYXkr2ONfYuDq5TttO9g",
+            "types": [
+                "bar",
+                "point_of_interest",
+                "establishment"
+            ]
+        },
+        {
+            "formatted_address": "12 Rue au Lait, 28000 Chartres, France",
+            "geometry": {
+                "location": {
+                    "lat": 48.4472758,
+                    "lng": 1.4889265
+                },
+                "viewport": {
+                    "northeast": {
+                        "lat": 48.4486101302915,
+                        "lng": 1.490296430291502
+                    },
+                    "southwest": {
+                        "lat": 48.4459121697085,
+                        "lng": 1.487598469708498
+                    }
+                }
+            },
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png",
+            "id": "b3c67d08d8395d34a0beb67dd588c1592533e65a",
+            "name": "O Tire Bouchon",
+            "opening_hours": {
+                "open_now": false,
+                "weekday_text": []
+            },
+            "photos": [
+                {
+                    "height": 3480,
+                    "html_attributions": [
+                        "\u003ca href=\"https://maps.google.com/maps/contrib/102081651240965491668/photos\"\u003eHeidi Glorieus\u003c/a\u003e"
+                    ],
+                    "photo_reference": "CmRaAAAAocwYnlNDPUsr5iLN92AAP1an7wOsAabPNk924bGnu2VTdxC9IOx-xizaIedaFzus2MmqQJqrCAuV1LOU69v1oUiHTUCyveu2A2prRiEFoBYgnZ-H4fZ-vbhgq0OhXSkkEhBRE401pq-RTcPAUlhvNdv6GhSr7wf19FFes0no0FlZSJgJQMYURQ",
+                    "width": 4640
+                }
+            ],
+            "place_id": "ChIJT7guXUgM5EcR3KSUrHjLRhg",
+            "rating": 4.5,
+            "reference": "CmRRAAAAzf0-MFr8ZLjhjuFc_q5kUZKv8LbrC3IBH53UfYzTmrBTLM5KfZ5_YerPkWRQ0fXGPHFV6jPn-M4sN2kdMsBZ8rqdYLz31Go9F9BQPA6jF1OCyEYd4VBeRs4Iyupba-F0EhDY3dfX5dlaeYFykqJbYNngGhTR_UCuXZs_tNCPsfFCCGVuaoENjw",
+            "types": [
+                "restaurant",
+                "food",
+                "point_of_interest",
+                "establishment"
+            ]
+        }
+    ],
+    "status": "OK"
+}
