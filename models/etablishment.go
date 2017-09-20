@@ -13,3 +13,21 @@ type Etablishment struct {
 	City        string  `gorm:"type:varchar(256); not null"`
 	Street      string  `gorm:"type:varchar(256); not null"`
 }
+
+func (s *Service) GetEtablishments() ([]Etablishment, error) {
+	var etablishments []Etablishment
+	err := s.DB.Find(&etablishments).Error
+	if err != nil {
+		return []Etablishment{}, err
+	}
+	return etablishments, nil
+}
+
+func (s *Service) GetEtablishment(id int) (Etablishment, error) {
+	var etablishment Etablishment
+	err := s.DB.First(&etablishment, id).Error
+	if err != nil {
+		return Etablishment{}, err
+	}
+	return etablishment, nil
+}

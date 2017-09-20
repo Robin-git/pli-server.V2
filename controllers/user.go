@@ -1,56 +1,50 @@
 package controllers
 
 import (
-	"encoding/json"
+	"fmt"
 	"net/http"
 	"strconv"
 
-	"github.com/gorilla/mux"
+	"github.com/gin-gonic/gin"
 )
 
 // HandlerGetUsers return all users
-func (c *Controller) HandlerGetUsers(w http.ResponseWriter, r *http.Request) {
-	res, err := c.Service.GetUsers()
+func (ctr *Controller) HandlerGetUsers(c *gin.Context) {
+	users, err := ctr.Service.GetUsers()
 	if err != nil {
-		http.Error(w, err.Error(), http.StatusNotFound)
+		c.JSON(http.StatusNotFound, gin.H{"error": err.Error()})
 		return
 	}
-	users, err := json.Marshal(res)
 	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
 	}
-	w.Write(users)
+	c.JSON(http.StatusOK, gin.H{"results": users})
 }
 
 // HandlerGetUser return one user
-func (c *Controller) HandlerGetUser(w http.ResponseWriter, r *http.Request) {
-	vars := mux.Vars(r)
-	id := vars["id"]
+func (ctr *Controller) HandlerGetUser(c *gin.Context) {
+	id := c.Param("id")
+	fmt.Println(id)
 	if id, err := strconv.Atoi(id); err == nil {
-		res, err := c.Service.GetUser(id)
+		user, err := ctr.Service.GetUser(id)
 		if err != nil {
-			http.Error(w, err.Error(), http.StatusNotFound)
+			c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 			return
 		}
-		user, err := json.Marshal(res)
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-			return
-		}
-		w.Write(user)
+		c.JSON(http.StatusOK, gin.H{"results": user})
 	} else {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
 	}
 }
 
 // HandlerAddUser post a new User
-func (c *Controller) HandlerAddUser(w http.ResponseWriter, r *http.Request) {
-	w.WriteHeader(http.StatusNotFound)
+func (ctr *Controller) HandlerAddUser(c *gin.Context) {
+	c.JSON(http.StatusNotFound, gin.H{"error": http.NotFound})
 }
 
 // HandlerDelUser post a new User
-func (c *Controller) HandlerDelUser(w http.ResponseWriter, r *http.Request) {
-	w.WriteHeader(http.StatusNotFound)
+func (ctr *Controller) HandlerDelUser(c *gin.Context) {
+	c.JSON(http.StatusNotFound, gin.H{"error": http.NotFound})
 }
