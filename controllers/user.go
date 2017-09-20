@@ -1,7 +1,6 @@
 package controllers
 
 import (
-	"fmt"
 	"net/http"
 	"strconv"
 
@@ -25,16 +24,15 @@ func (ctr *Controller) HandlerGetUsers(c *gin.Context) {
 // HandlerGetUser return one user
 func (ctr *Controller) HandlerGetUser(c *gin.Context) {
 	id := c.Param("id")
-	fmt.Println(id)
 	if id, err := strconv.Atoi(id); err == nil {
 		user, err := ctr.Service.GetUser(id)
 		if err != nil {
-			c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+			c.JSON(http.StatusNotFound, gin.H{"error": err.Error()})
 			return
 		}
 		c.JSON(http.StatusOK, gin.H{"results": user})
 	} else {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		c.JSON(http.StatusBadRequest, gin.H{"error": "bad arguments"})
 		return
 	}
 }

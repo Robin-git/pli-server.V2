@@ -25,5 +25,8 @@ func NewRouter() *gin.Engine {
 	r.GET("/api/etablishment", mariaController.HandlerGetEtablishments)
 	r.GET("/api/etablishment/:id", mariaController.HandlerGetEtablishment)
 
+	r.GET("/api/opinion", mariaController.HandlerGetOpinions)
+	r.POST("/api/opinion", mariaController.HandlerPostOpinion)
+
 	return r
 }

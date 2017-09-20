@@ -7,11 +7,13 @@ import (
 // User is struct of users
 type User struct {
 	gorm.Model
-	FirstName string
-	LastName  string
-	Email     string `gorm:"not null"`
-	Role      Role   `gorm:"ForeignKey:RoleID"`
-	RoleID    uint
+	FirstName    string
+	LastName     string
+	Email        string `gorm:"not null"`
+	Role         Role   `gorm:"ForeignKey:UserID;AssociationForeignKey:RoleRefer"`
+	RoleRefer    uint
+	Opinions     []Opinion `gorm:"ForeignKey:UserID;AssociationForeignKey:OpinionRefer"`
+	OpinionRefer uint
 }
 
 // GetUsers find all User

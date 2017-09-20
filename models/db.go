@@ -18,6 +18,7 @@ func InitMariaDB(c string) *Service {
 	db.AutoMigrate(User{})
 	db.AutoMigrate(Role{})
 	db.AutoMigrate(Etablishment{})
+	db.AutoMigrate(Opinion{})
 
 	return &Service{
 		DB: db,

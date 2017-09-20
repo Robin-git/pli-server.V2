@@ -4,5 +4,6 @@ import "github.com/jinzhu/gorm"
 
 type Role struct {
 	gorm.Model
-	Value string `sql:"not null"`
+	Value  string `gorm:"not null"`
+	UserID uint
 }
