@@ -1,6 +1,8 @@
 package models
 
-import "github.com/jinzhu/gorm"
+import (
+	"github.com/jinzhu/gorm"
+)
 
 type Etablishment struct {
 	gorm.Model
@@ -18,8 +20,7 @@ type Etablishment struct {
 
 func (s *Service) GetEtablishments() ([]Etablishment, error) {
 	var etablishments []Etablishment
-	err := s.DB.Find(&etablishments).Error
-	if err != nil {
+	if err := s.DB.Find(&etablishments).Error; err != nil {
 		return []Etablishment{}, err
 	}
 	return etablishments, nil
@@ -27,9 +28,23 @@ func (s *Service) GetEtablishments() ([]Etablishment, error) {
 
 func (s *Service) GetEtablishment(id int) (Etablishment, error) {
 	var etablishment Etablishment
-	err := s.DB.First(&etablishment, id).Error
-	if err != nil {
+	if err := s.DB.First(&etablishment, id).Error; err != nil {
 		return Etablishment{}, err
 	}
 	return etablishment, nil
+}
+
+func (s *Service) GetDistanceEtablishment(x, y, dist float64) ([]Etablishment, error) {
+	var (
+		r     []Etablishment
+		query = `select * 
+		from (
+			select *, ((sqrt((pow((x - ?),2))+(pow((y - ?),2)))*1000)*25) as distance 
+			from gloo_rec.etablishment 
+		) as result where distance < ? order by distance`
+	)
+	if err := s.DB.Raw(query, x, y, dist).Scan(&r).Error; err != nil {
+		return []Etablishment{}, err
+	}
+	return r, nil
 }

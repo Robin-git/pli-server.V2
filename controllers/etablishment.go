@@ -36,3 +36,33 @@ func (ctr *Controller) HandlerGetEtablishment(c *gin.Context) {
 		return
 	}
 }
+
+func (ctr *Controller) HandlerGetDistanceEtablishment(c *gin.Context) {
+	// params
+	x := c.Query("paramX")
+	y := c.Query("paramY")
+	d := c.Query("paramDistance")
+	// parse params
+	fx, err := strconv.ParseFloat(x, 32)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "cannot read paramX"})
+		return
+	}
+	fy, err := strconv.ParseFloat(y, 32)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "cannot read paramY"})
+		return
+	}
+	fd, err := strconv.ParseFloat(d, 32)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "cannot read paramDistance"})
+		return
+	}
+	// results
+	res, err := ctr.Service.GetDistanceEtablishment(fx, fy, fd)
+	if err == nil {
+		c.JSON(http.StatusOK, gin.H{"results": res})
+	} else {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "error 500"})
+	}
+}
