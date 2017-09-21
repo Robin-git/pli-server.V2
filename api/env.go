@@ -9,9 +9,11 @@ import (
 
 // SQLConnection is type of connection
 type SQLConnection struct {
+	Host     string
 	Login    string
 	Password string
 	Database string
+	Port     string
 }
 
 // GetConnection return service whith connection to sql database
@@ -32,6 +34,6 @@ func (c *SQLConnection) GetConnection() *models.Service {
 		log.Println("Warning : No GLOO_ENV selected")
 		log.Println("Default --> Started on development")
 	}
-	conn := fmt.Sprintf("%s:%s@/%s?charset=utf8&parseTime=True&loc=Local", c.Login, c.Password, env)
+	conn := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=utf8&parseTime=True&loc=Local", c.Login, c.Password, c.Host, c.Port, env)
 	return models.InitMariaDB(conn)
 }

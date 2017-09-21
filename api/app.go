@@ -11,9 +11,11 @@ import (
 func NewRouter() *gin.Engine {
 	// MariaDB is database of gloo app
 	MariaDB := &SQLConnection{
-		Login:    os.Getenv("GLOO_LOGIN"),
-		Password: os.Getenv("GLOO_PWD"),
-		Database: os.Getenv("GLOO_DATABASE"),
+		Host:     os.Getenv("DB_HOST"),
+		Login:    os.Getenv("DB_LOGIN"),
+		Password: os.Getenv("DB_PWD"),
+		Database: os.Getenv("DB_DATABASE"),
+		Port:     os.Getenv("DB_PORT"),
 	}
 	service := MariaDB.GetConnection()
 	mariaController := controllers.ControllerScoped(service)
