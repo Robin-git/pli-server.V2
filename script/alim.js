@@ -1,10 +1,21 @@
 const https = require('https')
 const mysql = require('mysql')
 
+// LOCALHOST
+// const con = mysql.createConnection({
+//     host: "localhost",
+//     user: "root",
+//     password: ""
+//     database: "gloo_rec"
+// })
+
+// AZURE
 const con = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: ""
+    host: "plidebian.cloudapp.net",
+    user: "preproduser28",
+    password: "Nin201tu96", 
+    port: 3598,
+    database: "gloo_rec"
 })
 
 con.connect((err) => {
@@ -50,7 +61,7 @@ function recurseCall(start = DEFAULT_URL) {
                 }
 
                 // INSERT 
-                var sql = `INSERT INTO gloo_rec.etablishment (name, x, y, postal_code, city, street) VALUES ?`;
+                var sql = `INSERT INTO etablishment (name, x, y, postal_code, city, street) VALUES ?`;
                 con.query(sql, [record], (err, result) => {
                     if (err) console.log(err);
                 });

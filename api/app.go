@@ -2,6 +2,7 @@ package api
 
 import (
 	"gloo-server/controllers"
+	"os"
 
 	"github.com/gin-gonic/gin"
 )
@@ -10,9 +11,9 @@ import (
 func NewRouter() *gin.Engine {
 	// MariaDB is database of gloo app
 	MariaDB := &SQLConnection{
-		Login:    "root",
-		Password: "",
-		Database: "gloo",
+		Login:    os.Getenv("GLOO_LOGIN"),
+		Password: os.Getenv("GLOO_PWD"),
+		Database: os.Getenv("GLOO_DATABASE"),
 	}
 	service := MariaDB.GetConnection()
 	mariaController := controllers.ControllerScoped(service)
