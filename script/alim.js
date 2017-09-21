@@ -36,8 +36,8 @@ function recurseCall(start = DEFAULT_URL) {
                 for (bar of decode.results) {
                     let tmp = []
                     tmp.push(bar['name'])
-                    tmp.push(bar['geometry']['location']['lng'])
                     tmp.push(bar['geometry']['location']['lat'])
+                    tmp.push(bar['geometry']['location']['lng'])
                     // Quand on arrivent en ville 
                     let address = bar['formatted_address']
                     let res = address.split(',');
