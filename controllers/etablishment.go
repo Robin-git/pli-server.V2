@@ -18,7 +18,7 @@ func (ctr *Controller) HandlerGetEtablishments(c *gin.Context) {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
 	}
-	c.JSON(http.StatusOK, gin.H{"results": etablishments})
+	c.JSON(http.StatusOK, gin.H{"result": etablishments})
 }
 
 // HandlerGetUser return one user
@@ -30,7 +30,7 @@ func (ctr *Controller) HandlerGetEtablishment(c *gin.Context) {
 			c.JSON(http.StatusNotFound, gin.H{"error": err.Error()})
 			return
 		}
-		c.JSON(http.StatusOK, gin.H{"results": etablishment})
+		c.JSON(http.StatusOK, gin.H{"result": etablishment})
 	} else {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
@@ -58,10 +58,10 @@ func (ctr *Controller) HandlerGetDistanceEtablishment(c *gin.Context) {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "cannot read paramDistance"})
 		return
 	}
-	// results
+	// result
 	res, err := ctr.Service.GetDistanceEtablishment(fx, fy, fd)
 	if err == nil {
-		c.JSON(http.StatusOK, gin.H{"results": res})
+		c.JSON(http.StatusOK, gin.H{"result": res})
 	} else {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "error 500"})
 	}

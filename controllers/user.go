@@ -18,7 +18,7 @@ func (ctr *Controller) HandlerGetUsers(c *gin.Context) {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
 	}
-	c.JSON(http.StatusOK, gin.H{"results": users})
+	c.JSON(http.StatusOK, gin.H{"result": users})
 }
 
 // HandlerGetUser return one user
@@ -30,7 +30,7 @@ func (ctr *Controller) HandlerGetUser(c *gin.Context) {
 			c.JSON(http.StatusNotFound, gin.H{"error": err.Error()})
 			return
 		}
-		c.JSON(http.StatusOK, gin.H{"results": user})
+		c.JSON(http.StatusOK, gin.H{"result": user})
 	} else {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "bad arguments"})
 		return

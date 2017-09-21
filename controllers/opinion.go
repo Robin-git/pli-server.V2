@@ -18,7 +18,7 @@ func (ctr *Controller) HandlerGetOpinions(c *gin.Context) {
 	}
 	if id, err := strconv.Atoi(id); err == nil {
 		opinions, _ := ctr.Service.GetOpinion(id)
-		c.JSON(http.StatusOK, gin.H{"results": opinions})
+		c.JSON(http.StatusOK, gin.H{"result": opinions})
 	} else {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "id_etablishment bad format"})
 		return
@@ -41,7 +41,7 @@ func (ctr *Controller) HandlerPostOpinion(c *gin.Context) {
 			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 			return
 		}
-		c.JSON(http.StatusOK, gin.H{"result": json})
+		c.JSON(http.StatusOK, gin.H{"result": "OK"})
 	} else {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 	}
