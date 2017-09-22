@@ -39,7 +39,7 @@ func (s *Service) GetDistanceEtablishment(x, y, dist float64) ([]Etablishment, e
 		r     []Etablishment
 		query = `select * 
 		from (
-			select *, ((sqrt((pow((x - ?),2))+(pow((y - ?),2)))*1000)*25) as distance 
+			select *, ((sqrt((pow((x - ?),2))+(pow((y - ?),2)))*1000) / 25) as distance 
 			from gloo_rec.etablishment 
 		) as result where distance < ? order by distance`
 	)
@@ -47,4 +47,15 @@ func (s *Service) GetDistanceEtablishment(x, y, dist float64) ([]Etablishment, e
 		return []Etablishment{}, err
 	}
 	return r, nil
+}
+
+func (s *Service) SearchEtablishmentByName(r string) ([]Etablishment, error) {
+	var (
+		e     []Etablishment
+		query = `select * from etablishment where name LIKE "%?%"`
+	)
+	if err := s.DB.Raw(query, r).Scan(&e).Error; err != nil {
+		return []Etablishment{}, err
+	}
+	return e, nil
 }
