@@ -13,7 +13,6 @@ var (
 )
 
 func init() {
-	server = httptest.NewServer(api.NewRouter()) //Creating new server with the user handlers
-
+	server = httptest.NewServer(api.NewRouter())       //Creating new server with the user handlers
 	usersUrl = fmt.Sprintf("%s/api/users", server.URL) //Grab the address for the API endpoint
 }

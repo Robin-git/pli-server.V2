@@ -6,21 +6,23 @@ import (
 
 type Etablishment struct {
 	gorm.Model
-	Name         string    `gorm:"not null"`
-	X            float64   `gorm:"not null"`
-	Y            float64   `gorm:"not null"`
-	PhoneNumber  string    `gorm:"type:varchar(15)"`
-	Email        string    `gorm:"type:varchar(256)"`
-	PostalCode   string    `gorm:"type:varchar(10); not null"`
-	City         string    `gorm:"type:varchar(256); not null"`
-	Street       string    `gorm:"type:varchar(256); not null"`
-	Opinions     []Opinion `gorm:"ForeignKey:EtablishmentID;AssociationForeignKey:OpinionRefer"`
-	OpinionRefer uint
+	Name        string  `gorm:"not null"`
+	X           float64 `gorm:"not null"`
+	Y           float64 `gorm:"not null"`
+	PhoneNumber string  `gorm:"type:varchar(15)"`
+	Email       string  `gorm:"type:varchar(256)"`
+	PostalCode  string  `gorm:"type:varchar(10); not null"`
+	City        string  `gorm:"type:varchar(256); not null"`
+	Street      string  `gorm:"type:varchar(256); not null"`
+	Opinions    []Opinion
 }
 
 func (s *Service) GetEtablishments() ([]Etablishment, error) {
-	var etablishments []Etablishment
-	if err := s.DB.Find(&etablishments).Error; err != nil {
+	var (
+		etablishments []Etablishment
+		opinions      []Opinion
+	)
+	if err := s.DB.Find(&etablishments).Related(&opinions).Error; err != nil {
 		return []Etablishment{}, err
 	}
 	return etablishments, nil

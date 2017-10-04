@@ -11,11 +11,11 @@ const mysql = require('mysql')
 
 // AZURE
 const con = mysql.createConnection({
-    host: "plidebian.cloudapp.net",
-    user: "preproduser28",
-    password: "Nin201tu96", 
-    port: 3598,
-    database: "gloo_rec"
+    host: "localhost",
+    user: "root",
+    password: "", 
+    port: 3306,
+    database: "gloo_dev"
 })
 
 con.connect((err) => {

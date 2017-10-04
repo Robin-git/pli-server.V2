@@ -2,10 +2,33 @@ package api
 
 import (
 	"gloo-server/controllers"
+	"log"
 	"os"
 
 	"github.com/gin-gonic/gin"
 )
+
+var (
+	DB_HOST     string
+	DB_LOGIN    string
+	DB_PWD      string
+	DB_DATABASE string
+	DB_PORT     string
+)
+
+func init() {
+	l := []string{"DB_HOST", "DB_LOGIN", "DB_PWD", "DB_DATABASE", "DB_PORT"}
+	c := true
+	for _, i := range l {
+		if os.Getenv(i) == "" && i != "DB_PWD" {
+			c = false
+			log.Println(i, " n'est pas définie")
+		}
+	}
+	if !c {
+		log.Fatal()
+	}
+}
 
 // NewRouter return new mux Router
 func NewRouter() *gin.Engine {

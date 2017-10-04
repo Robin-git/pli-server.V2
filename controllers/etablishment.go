@@ -10,11 +10,9 @@ import (
 // HandlerGetUsers return all users
 func (ctr *Controller) HandlerGetEtablishments(c *gin.Context) {
 	// if search
-	var search struct {
-		Name string `binding:"required"`
-	}
-	if err := c.BindJSON(&search); err == nil {
-		res, err := ctr.Service.SearchEtablishmentByName(search.Name)
+	name := c.DefaultQuery("name", "")
+	if name != "" {
+		res, err := ctr.Service.SearchEtablishmentByName(name)
 		if err != nil {
 			c.JSON(http.StatusNotFound, gin.H{HError: err.Error()})
 		} else {

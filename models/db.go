@@ -15,10 +15,12 @@ func InitMariaDB(c string) *Service {
 	db.SingularTable(true)
 
 	// All Migration
-	db.AutoMigrate(User{})
-	db.AutoMigrate(Role{})
-	db.AutoMigrate(Etablishment{})
-	db.AutoMigrate(Opinion{})
+	db.AutoMigrate(
+		User{},
+		Role{},
+		Etablishment{},
+		Opinion{},
+	)
 
 	return &Service{
 		DB: db,
