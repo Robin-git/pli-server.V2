@@ -16,6 +16,28 @@ type SQLConnection struct {
 	Port     string
 }
 
+func init() {
+	ok := true
+	for ok {
+		switch {
+		case os.Getenv("DB_HOST") == "":
+			log.Println("DB_HOST par défault")
+			os.Setenv("DB_HOST", "localhost")
+		case os.Getenv("DB_LOGIN") == "":
+			log.Println("DB_LOGIN par défault")
+			os.Setenv("DB_LOGIN", "root")
+		case os.Getenv("DB_DATABASE") == "":
+			log.Println("DB_DATABASE par défault")
+			os.Setenv("DB_DATABASE", "gloo")
+		case os.Getenv("DB_PORT") == "":
+			log.Println("DB_PORT par défault")
+			os.Setenv("DB_PORT", "3306")
+		default:
+			ok = false
+		}
+	}
+}
+
 // GetConnection return service whith connection to sql database
 func (c *SQLConnection) GetConnection() *models.Service {
 	var env string

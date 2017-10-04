@@ -10,7 +10,7 @@ import (
 // HandlerGetUsers return all users
 func (ctr *Controller) HandlerGetEtablishments(c *gin.Context) {
 	// if search
-	name := c.DefaultQuery("name", "")
+	name := c.DefaultQuery("Name", "")
 	if name != "" {
 		res, err := ctr.Service.SearchEtablishmentByName(name)
 		if err != nil {

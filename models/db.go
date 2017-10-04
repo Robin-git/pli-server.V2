@@ -16,10 +16,10 @@ func InitMariaDB(c string) *Service {
 
 	// All Migration
 	db.AutoMigrate(
-		User{},
-		Role{},
-		Etablishment{},
-		Opinion{},
+		&User{},
+		&Role{},
+		&Etablishment{},
+		&Opinion{},
 	)
 
 	return &Service{
