@@ -1,0 +1,16 @@
+{
+  "name": "script",
+  "version": "0.0.1",
+  "description": "",
+  "main": "alim.js",
+  "dependencies": {
+    "elasticsearch": "^13.3.1",
+    "mysql": "^2.15.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Gloo Team",
+  "license": "ISC"
+}

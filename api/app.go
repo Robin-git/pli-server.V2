@@ -27,6 +27,7 @@ func NewRouter() *gin.Engine {
 
 	r.GET("/api/etablishment", mariaController.HandlerGetEtablishments)
 	r.GET("/api/etablishment/:id", mariaController.HandlerGetEtablishment)
+	r.GET("/api/etablishment/:id/note", mariaController.HandlerGetAverageNoteEtablishment)
 	r.GET("/api/distance", mariaController.HandlerGetDistanceEtablishment)
 
 	r.GET("/api/opinion", mariaController.HandlerGetOpinions)

@@ -74,3 +74,13 @@ func (ctr *Controller) HandlerGetDistanceEtablishment(c *gin.Context) {
 		c.JSON(http.StatusInternalServerError, gin.H{HError: "error 500"})
 	}
 }
+
+func (ctr *Controller) HandlerGetAverageNoteEtablishment(c *gin.Context) {
+	id := c.Param("id")
+	if id, err := strconv.Atoi(id); err == nil {
+		average, _ := ctr.Service.GetAverageNoteEtablishment(id)
+		c.JSON(http.StatusOK, gin.H{HResult: average})
+	} else {
+		c.JSON(http.StatusInternalServerError, gin.H{HError: err.Error()})
+	}
+}

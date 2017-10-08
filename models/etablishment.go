@@ -58,3 +58,20 @@ func (s *Service) SearchEtablishmentByName(r string) ([]Etablishment, error) {
 	}
 	return etablishments, nil
 }
+
+func (s *Service) GetAverageNoteEtablishment(id int) (struct{ Note float64 }, error) {
+	var (
+		Average struct {
+			Note float64
+		}
+		average = Average
+		query   = `select avg(note) as note 
+				from etablishment, opinion 
+				where etablishment.id = ? 
+				and etablishment.id = opinion.etablishment_id`
+	)
+	if err := s.DB.Raw(query, id).Scan(&average).Error; err != nil {
+		return average, err
+	}
+	return average, nil
+}
