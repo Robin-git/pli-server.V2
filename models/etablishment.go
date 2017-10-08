@@ -17,12 +17,29 @@ type Etablishment struct {
 	Opinions    []Opinion
 }
 
-func (s *Service) GetEtablishments() ([]Etablishment, error) {
-	var etablishments []Etablishment
-	if err := s.DB.Preload("Opinions").Find(&etablishments).Error; err != nil {
-		return []Etablishment{}, err
+func (s *Service) GetEtablishments() (interface{}, error) {
+	type EtablishmentWithAverage struct {
+		Etablishment
+		Note_average float64
 	}
-	return etablishments, nil
+	type EtablishmentsWithAverageResult []EtablishmentWithAverage
+	var (
+		etablishments []Etablishment
+		result        EtablishmentsWithAverageResult
+	)
+	if err := s.DB.Preload("Opinions").Find(&etablishments).Error; err != nil {
+		return result, err
+	}
+	for _, etablishment := range etablishments {
+		id := int(etablishment.ID)
+		note_average, _ := s.GetAverageNoteEtablishment(id)
+		r := EtablishmentWithAverage{
+			etablishment,
+			note_average.Note,
+		}
+		result = append(result, r)
+	}
+	return result, nil
 }
 
 func (s *Service) GetEtablishment(id int) (Etablishment, error) {
@@ -61,11 +78,10 @@ func (s *Service) SearchEtablishmentByName(r string) ([]Etablishment, error) {
 
 func (s *Service) GetAverageNoteEtablishment(id int) (struct{ Note float64 }, error) {
 	var (
-		Average struct {
+		average struct {
 			Note float64
 		}
-		average = Average
-		query   = `select avg(note) as note 
+		query = `select avg(note) as note 
 				from etablishment, opinion 
 				where etablishment.id = ? 
 				and etablishment.id = opinion.etablishment_id`
