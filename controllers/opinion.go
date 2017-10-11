@@ -35,6 +35,6 @@ func (ctr *Controller) HandlerPostOpinion(c *gin.Context) {
 		}
 		c.JSON(http.StatusOK, gin.H{HResult: "OK"})
 	} else {
-		c.JSON(http.StatusBadRequest, gin.H{HError: err.Error()})
+		c.JSON(http.StatusBadRequest, gin.H{HError: http.StatusBadRequest})
 	}
 }

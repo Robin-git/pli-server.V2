@@ -17,20 +17,20 @@ type Etablishment struct {
 	Opinions    []Opinion
 }
 
+type Etablishments []Etablishment
+
 func (s *Service) GetEtablishments() (interface{}, error) {
 	type EtablishmentWithAverage struct {
 		Etablishment
 		Note_average float64
 	}
 	type EtablishmentsWithAverageResult []EtablishmentWithAverage
-	var (
-		etablishments []Etablishment
-		result        EtablishmentsWithAverageResult
-	)
+	var result EtablishmentsWithAverageResult
+	etablishments := &Etablishments{}
 	if err := s.DB.Preload("Opinions").Find(&etablishments).Error; err != nil {
 		return result, err
 	}
-	for _, etablishment := range etablishments {
+	for _, etablishment := range *etablishments {
 		id := int(etablishment.ID)
 		note_average, _ := s.GetAverageNoteEtablishment(id)
 		r := EtablishmentWithAverage{
@@ -42,38 +42,29 @@ func (s *Service) GetEtablishments() (interface{}, error) {
 	return result, nil
 }
 
-func (s *Service) GetEtablishment(id int) (Etablishment, error) {
-	var etablishment Etablishment
-	if err := s.DB.Preload("Opinions").First(&etablishment, id).Error; err != nil {
-		return Etablishment{}, err
-	}
-	return etablishment, nil
+func (s *Service) GetEtablishment(id int) (*Etablishment, error) {
+	etablishment := &Etablishment{}
+	return etablishment, s.DB.Preload("Opinions").First(etablishment, id).Error
 }
 
-func (s *Service) GetDistanceEtablishment(x, y, dist float64) ([]Etablishment, error) {
+func (s *Service) GetDistanceEtablishment(x, y, dist float64) (*Etablishments, error) {
+	etablishments := &Etablishments{}
 	var (
-		etablishments []Etablishment
-		query         = `select * 
+		query = `select * 
 		from (
 			select *, ((sqrt((pow((x - ?),2))+(pow((y - ?),2)))*1000) / 25) as distance 
 			from etablishment 
 		) as result where distance < ? order by distance`
 	)
-	if err := s.DB.Raw(query, x, y, dist).Scan(&etablishments).Error; err != nil {
-		return []Etablishment{}, err
-	}
-	return etablishments, nil
+	return etablishments, s.DB.Raw(query, x, y, dist).Scan(etablishments).Error
 }
 
-func (s *Service) SearchEtablishmentByName(r string) ([]Etablishment, error) {
+func (s *Service) SearchEtablishmentByName(r string) (*Etablishments, error) {
+	etablishments := &Etablishments{}
 	var (
-		etablishments []Etablishment
-		query         = `select * from etablishment where replace(name, "-", " ") LIKE ?`
+		query = `select * from etablishment where replace(name, "-", " ") LIKE ?`
 	)
-	if err := s.DB.Raw(query, r+"%").Scan(&etablishments).Error; err != nil {
-		return []Etablishment{}, err
-	}
-	return etablishments, nil
+	return etablishments, s.DB.Raw(query, r+"%").Scan(&etablishments).Error
 }
 
 func (s *Service) GetAverageNoteEtablishment(id int) (struct{ Note float64 }, error) {
@@ -86,8 +77,5 @@ func (s *Service) GetAverageNoteEtablishment(id int) (struct{ Note float64 }, er
 				where etablishment.id = ? 
 				and etablishment.id = opinion.etablishment_id`
 	)
-	if err := s.DB.Raw(query, id).Scan(&average).Error; err != nil {
-		return average, err
-	}
-	return average, nil
+	return average, s.DB.Raw(query, id).Scan(&average).Error
 }

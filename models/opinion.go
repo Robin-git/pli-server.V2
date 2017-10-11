@@ -11,13 +11,11 @@ type Opinion struct {
 	UserID         uint `gorm:"not null" binding:"required"`
 }
 
-func (s *Service) GetOpinion(idEtablishment uint) ([]Opinion, error) {
-	var opinions []Opinion
-	err := s.DB.Where(&Opinion{EtablishmentID: idEtablishment}).Find(&opinions).Error
-	if err != nil {
-		return []Opinion{}, err
-	}
-	return opinions, nil
+type Opinions []Opinion
+
+func (s *Service) GetOpinion(idEtablishment uint) (*Opinions, error) {
+	opinions := &Opinions{}
+	return opinions, s.DB.Where(&Opinion{EtablishmentID: idEtablishment}).Find(opinions).Error
 }
 
 func (s *Service) PostOpinion(opinion Opinion) error {
