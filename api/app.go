@@ -18,20 +18,22 @@ func NewRouter() *gin.Engine {
 		Port:     os.Getenv("DB_PORT"),
 	}
 	service := MariaDB.GetConnection()
-	mariaController := controllers.ControllerScoped(service)
+	etablishmentCtrl := controllers.CtrlScopedEtablishment(service)
+	userCtrl := controllers.CtrlScopedUser(service)
+	opinionCtrl := controllers.CtrlScopedOpinion(service)
 
 	r := gin.Default()
 
-	r.GET("/api/user", mariaController.HandlerGetUsers)
-	r.GET("/api/user/:id", mariaController.HandlerGetUser)
+	r.GET("/api/user", userCtrl.HandlerGetUsers)
+	r.GET("/api/user/:id", userCtrl.HandlerGetUser)
 
-	r.GET("/api/etablishment", mariaController.HandlerGetEtablishments)
-	r.GET("/api/etablishment/:id", mariaController.HandlerGetEtablishment)
-	r.GET("/api/etablishment/:id/note", mariaController.HandlerGetAverageNoteEtablishment)
-	r.GET("/api/distance", mariaController.HandlerGetDistanceEtablishment)
+	r.GET("/api/etablishment", etablishmentCtrl.HandlerGetEtablishments)
+	r.GET("/api/etablishment/:id", etablishmentCtrl.HandlerGetEtablishment)
+	r.GET("/api/etablishment/:id/note", etablishmentCtrl.HandlerGetAverageNoteEtablishment)
+	r.GET("/api/distance", etablishmentCtrl.HandlerGetDistanceEtablishment)
 
-	r.GET("/api/opinion", mariaController.HandlerGetOpinions)
-	r.POST("/api/opinion", mariaController.HandlerPostOpinion)
+	r.GET("/api/opinion", opinionCtrl.HandlerGetOpinions)
+	r.POST("/api/opinion", opinionCtrl.HandlerPostOpinion)
 
 	return r
 }

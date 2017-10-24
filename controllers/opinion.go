@@ -10,7 +10,20 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func (ctr *Controller) HandlerGetOpinions(c *gin.Context) {
+// CtrlScopedOpinion is initialize new Controller
+func CtrlScopedOpinion(s *models.Database) *CtrlOpinion {
+	return &CtrlOpinion{
+		Service: &models.ServiceOpinion{s},
+	}
+}
+
+// CtrlOpinion is controller of Opinion
+type CtrlOpinion struct {
+	Service *models.ServiceOpinion
+}
+
+// HandlerGetOpinions return multiple opinions
+func (ctr *CtrlOpinion) HandlerGetOpinions(c *gin.Context) {
 	id := c.Query("id_etablishment")
 	if id == "" {
 		c.JSON(http.StatusBadRequest, gin.H{HError: "id_etablishment is required"})
@@ -25,7 +38,8 @@ func (ctr *Controller) HandlerGetOpinions(c *gin.Context) {
 	}
 }
 
-func (ctr *Controller) HandlerPostOpinion(c *gin.Context) {
+// HandlerPostOpinion post one opinion
+func (ctr *CtrlOpinion) HandlerPostOpinion(c *gin.Context) {
 	var json models.Opinion
 	if err := c.BindJSON(&json); err == nil {
 		log.Println(json)

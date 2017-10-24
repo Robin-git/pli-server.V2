@@ -4,11 +4,25 @@ import (
 	"net/http"
 	"strconv"
 
+	"gloo-server/models"
+
 	"github.com/gin-gonic/gin"
 )
 
-// HandlerGetUsers return all users
-func (ctr *Controller) HandlerGetEtablishments(c *gin.Context) {
+// CtrlScopedEtablishment is initialize new Controller
+func CtrlScopedEtablishment(s *models.Database) *CtrlEtablsihment {
+	return &CtrlEtablsihment{
+		Service: &models.ServiceEtablishment{s},
+	}
+}
+
+// CtrlEtablsihment is controller of Etablisment
+type CtrlEtablsihment struct {
+	Service *models.ServiceEtablishment
+}
+
+// HandlerGetEtablishments return all Etablishments
+func (ctr *CtrlEtablsihment) HandlerGetEtablishments(c *gin.Context) {
 	// if search
 	name := c.DefaultQuery("Name", "")
 	if name != "" {
@@ -29,8 +43,8 @@ func (ctr *Controller) HandlerGetEtablishments(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{HResult: etablishments})
 }
 
-// HandlerGetUser return one user
-func (ctr *Controller) HandlerGetEtablishment(c *gin.Context) {
+// HandlerGetEtablishment return one Etablishment
+func (ctr *CtrlEtablsihment) HandlerGetEtablishment(c *gin.Context) {
 	id := c.Param("id")
 	if id, err := strconv.Atoi(id); err == nil {
 		etablishment, err := ctr.Service.GetEtablishment(id)
@@ -45,7 +59,8 @@ func (ctr *Controller) HandlerGetEtablishment(c *gin.Context) {
 	}
 }
 
-func (ctr *Controller) HandlerGetDistanceEtablishment(c *gin.Context) {
+// HandlerGetDistanceEtablishment return distance of user and x & y & distance
+func (ctr *CtrlEtablsihment) HandlerGetDistanceEtablishment(c *gin.Context) {
 	// params
 	x := c.Query("paramX")
 	y := c.Query("paramY")
@@ -75,7 +90,8 @@ func (ctr *Controller) HandlerGetDistanceEtablishment(c *gin.Context) {
 	}
 }
 
-func (ctr *Controller) HandlerGetAverageNoteEtablishment(c *gin.Context) {
+// HandlerGetAverageNoteEtablishment return average note of one Etablishment
+func (ctr *CtrlEtablsihment) HandlerGetAverageNoteEtablishment(c *gin.Context) {
 	id := c.Param("id")
 	if id, err := strconv.Atoi(id); err == nil {
 		average, _ := ctr.Service.GetAverageNoteEtablishment(id)

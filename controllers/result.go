@@ -1,6 +1,8 @@
 package controllers
 
 const (
+	// HResult is good result
 	HResult = "result"
-	HError  = "error"
+	// HError is bad result
+	HError = "error"
 )

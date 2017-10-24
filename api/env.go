@@ -39,7 +39,7 @@ func init() {
 }
 
 // GetConnection return service whith connection to sql database
-func (c *SQLConnection) GetConnection() *models.Service {
+func (c *SQLConnection) GetConnection() *models.Database {
 	var env string
 	switch os.Getenv("GLOO_ENV") {
 	case "dev":

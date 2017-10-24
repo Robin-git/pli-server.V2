@@ -7,7 +7,7 @@ import (
 )
 
 // InitMariaDB return connection to mariadb gloo
-func InitMariaDB(c string) *Service {
+func InitMariaDB(c string) *Database {
 	db, err := gorm.Open("mysql", c)
 	if err != nil {
 		panic(err)
@@ -22,7 +22,7 @@ func InitMariaDB(c string) *Service {
 		&Opinion{},
 	)
 
-	return &Service{
+	return &Database{
 		DB: db,
 	}
 }

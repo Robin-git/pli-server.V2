@@ -2,7 +2,14 @@ package models
 
 import "github.com/jinzhu/gorm"
 
-// Service is struct of service
-type Service struct {
+// Database is struct of service
+type Database struct {
 	DB *gorm.DB
+}
+
+// Service contain all services
+type Service struct {
+	ServiceUser
+	ServiceEtablishment
+	ServiceOpinion
 }

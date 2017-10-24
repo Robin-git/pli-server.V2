@@ -4,6 +4,11 @@ import (
 	"github.com/jinzhu/gorm"
 )
 
+// ServiceUser is a service of User
+type ServiceUser struct {
+	*Database
+}
+
 // User is struct of users
 type User struct {
 	gorm.Model
@@ -15,7 +20,7 @@ type User struct {
 }
 
 // GetUsers find all User
-func (s *Service) GetUsers() ([]User, error) {
+func (s *ServiceUser) GetUsers() ([]User, error) {
 	var users []User
 	err := s.DB.Find(&users).Error
 	if err != nil {
@@ -25,7 +30,7 @@ func (s *Service) GetUsers() ([]User, error) {
 }
 
 // GetUser find one User
-func (s *Service) GetUser(id int) (User, error) {
+func (s *ServiceUser) GetUser(id int) (User, error) {
 	var user User
 	err := s.DB.First(&user, id).Error
 	if err != nil {
@@ -34,8 +39,8 @@ func (s *Service) GetUser(id int) (User, error) {
 	return user, nil
 }
 
-// GetUser find one User
-func (s *Service) AddUser(u *User) error {
+// AddUser post one User
+func (s *ServiceUser) AddUser(u *User) error {
 	err := s.DB.Create(u).Error
 	if err != nil {
 		return err

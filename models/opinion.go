@@ -2,6 +2,11 @@ package models
 
 import "github.com/jinzhu/gorm"
 
+// ServiceOpinion is a service of Opinion
+type ServiceOpinion struct {
+	*Database
+}
+
 //Opinion (id, User.id, Etablishment.id, *note*, *comment*, date)
 type Opinion struct {
 	gorm.Model
@@ -11,13 +16,16 @@ type Opinion struct {
 	UserID         uint `gorm:"not null" binding:"required"`
 }
 
+// Opinions is list of Opinion
 type Opinions []Opinion
 
-func (s *Service) GetOpinion(idEtablishment uint) (*Opinions, error) {
+// GetOpinion return one opinion
+func (s *ServiceOpinion) GetOpinion(idEtablishment uint) (*Opinions, error) {
 	opinions := &Opinions{}
 	return opinions, s.DB.Where(&Opinion{EtablishmentID: idEtablishment}).Find(opinions).Error
 }
 
-func (s *Service) PostOpinion(opinion Opinion) error {
+// PostOpinion post one opinion
+func (s *ServiceOpinion) PostOpinion(opinion Opinion) error {
 	return s.DB.Create(&opinion).Error
 }

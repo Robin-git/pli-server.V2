@@ -4,6 +4,12 @@ import (
 	"github.com/jinzhu/gorm"
 )
 
+// ServiceEtablishment is a service of Etablishment
+type ServiceEtablishment struct {
+	*Database
+}
+
+// Etablishment structure
 type Etablishment struct {
 	gorm.Model
 	Name        string  `gorm:"not null"`
@@ -17,37 +23,46 @@ type Etablishment struct {
 	Opinions    []Opinion
 }
 
+// Etablishments is list of Etablishment
 type Etablishments []Etablishment
 
-func (s *Service) GetEtablishments() (interface{}, error) {
-	type EtablishmentWithAverage struct {
-		Etablishment
-		Note_average float64
-	}
-	type EtablishmentsWithAverageResult []EtablishmentWithAverage
-	var result EtablishmentsWithAverageResult
+// EtablishmentExtended is Etablishment whit
+// - NoteAverage
+type EtablishmentExtended struct {
+	Etablishment
+	NoteAverage float64
+}
+
+// EtablishmentExtendeds is list of EtablishmentExtended
+type EtablishmentExtendeds []EtablishmentExtended
+
+// GetEtablishments return all etablishments
+func (s *ServiceEtablishment) GetEtablishments() (interface{}, error) {
+	result := &EtablishmentExtendeds{}
 	etablishments := &Etablishments{}
 	if err := s.DB.Preload("Opinions").Find(&etablishments).Error; err != nil {
 		return result, err
 	}
 	for _, etablishment := range *etablishments {
 		id := int(etablishment.ID)
-		note_average, _ := s.GetAverageNoteEtablishment(id)
-		r := EtablishmentWithAverage{
+		noteAverage, _ := s.GetAverageNoteEtablishment(id)
+		r := &EtablishmentExtended{
 			etablishment,
-			note_average.Note,
+			noteAverage.Note,
 		}
-		result = append(result, r)
+		*result = append(*result, *r)
 	}
 	return result, nil
 }
 
-func (s *Service) GetEtablishment(id int) (*Etablishment, error) {
+// GetEtablishment return one etablishment
+func (s *ServiceEtablishment) GetEtablishment(id int) (*Etablishment, error) {
 	etablishment := &Etablishment{}
 	return etablishment, s.DB.Preload("Opinions").First(etablishment, id).Error
 }
 
-func (s *Service) GetDistanceEtablishment(x, y, dist float64) (*Etablishments, error) {
+// GetDistanceEtablishment return distance from position user and etablishment x and y
+func (s *ServiceEtablishment) GetDistanceEtablishment(x, y, dist float64) (*Etablishments, error) {
 	etablishments := &Etablishments{}
 	var (
 		query = `select * 
@@ -59,7 +74,8 @@ func (s *Service) GetDistanceEtablishment(x, y, dist float64) (*Etablishments, e
 	return etablishments, s.DB.Raw(query, x, y, dist).Scan(etablishments).Error
 }
 
-func (s *Service) SearchEtablishmentByName(r string) (*Etablishments, error) {
+// SearchEtablishmentByName search etablishment by name
+func (s *ServiceEtablishment) SearchEtablishmentByName(r string) (*Etablishments, error) {
 	etablishments := &Etablishments{}
 	var (
 		query = `select * from etablishment where replace(name, "-", " ") LIKE ?`
@@ -67,7 +83,8 @@ func (s *Service) SearchEtablishmentByName(r string) (*Etablishments, error) {
 	return etablishments, s.DB.Raw(query, r+"%").Scan(&etablishments).Error
 }
 
-func (s *Service) GetAverageNoteEtablishment(id int) (struct{ Note float64 }, error) {
+// GetAverageNoteEtablishment return a average note from one etablishment
+func (s *ServiceEtablishment) GetAverageNoteEtablishment(id int) (struct{ Note float64 }, error) {
 	var (
 		average struct {
 			Note float64
