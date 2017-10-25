@@ -17,10 +17,11 @@ func NewRouter() *gin.Engine {
 		Database: os.Getenv("DB_DATABASE"),
 		Port:     os.Getenv("DB_PORT"),
 	}
-	service := MariaDB.GetConnection()
-	etablishmentCtrl := controllers.CtrlScopedEtablishment(service)
-	userCtrl := controllers.CtrlScopedUser(service)
-	opinionCtrl := controllers.CtrlScopedOpinion(service)
+	db := MariaDB.GetConnection()
+
+	etablishmentCtrl := controllers.CtrlScopedEtablishment(db)
+	userCtrl := controllers.CtrlScopedUser(db)
+	opinionCtrl := controllers.CtrlScopedOpinion(db)
 
 	r := gin.Default()
 

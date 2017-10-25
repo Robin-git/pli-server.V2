@@ -43,11 +43,11 @@ func (s *ServiceEtablishment) GetEtablishments() (interface{}, error) {
 	if err := s.DB.Preload("Opinions").Find(&etablishments).Error; err != nil {
 		return result, err
 	}
-	for _, etablishment := range *etablishments {
-		id := int(etablishment.ID)
+	for _, e := range *etablishments {
+		id := int(e.ID)
 		noteAverage, _ := s.GetAverageNoteEtablishment(id)
 		r := &EtablishmentExtended{
-			etablishment,
+			e,
 			noteAverage.Note,
 		}
 		*result = append(*result, *r)
