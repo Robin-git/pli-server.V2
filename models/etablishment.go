@@ -6,21 +6,21 @@ import (
 
 // ServiceEtablishment is a service of Etablishment
 type ServiceEtablishment struct {
-	*Database
+	DB *gorm.DB
 }
 
 // Etablishment structure
 type Etablishment struct {
 	gorm.Model
-	Name        string  `gorm:"not null"`
-	X           float64 `gorm:"not null"`
-	Y           float64 `gorm:"not null"`
-	PhoneNumber string  `gorm:"type:varchar(15)"`
-	Email       string  `gorm:"type:varchar(256)"`
-	PostalCode  string  `gorm:"type:varchar(10); not null"`
-	City        string  `gorm:"type:varchar(256); not null"`
-	Street      string  `gorm:"type:varchar(256); not null"`
-	Opinions    []Opinion
+	Name        string    `gorm:"not null"`
+	X           float64   `gorm:"not null"`
+	Y           float64   `gorm:"not null"`
+	PhoneNumber string    `gorm:"type:varchar(15)"`
+	Email       string    `gorm:"type:varchar(256)"`
+	PostalCode  string    `gorm:"type:varchar(10); not null"`
+	City        string    `gorm:"type:varchar(256); not null"`
+	Street      string    `gorm:"type:varchar(256); not null"`
+	Opinions    []Opinion `gorm:"ForeignKey:etablishment_id"`
 }
 
 // Etablishments is list of Etablishment
@@ -71,7 +71,8 @@ func (s *ServiceEtablishment) GetDistanceEtablishment(x, y, dist float64) (*Etab
 			from etablishment 
 		) as result where distance < ? order by distance`
 	)
-	return etablishments, s.DB.Raw(query, x, y, dist).Scan(etablishments).Error
+	return etablishments,
+		s.DB.Raw(query, x, y, dist).Scan(etablishments).Error
 }
 
 // SearchEtablishmentByName search etablishment by name

@@ -4,7 +4,7 @@ import "github.com/jinzhu/gorm"
 
 // ServiceOpinion is a service of Opinion
 type ServiceOpinion struct {
-	*Database
+	DB *gorm.DB
 }
 
 //Opinion (id, User.id, Etablishment.id, *note*, *comment*, date)

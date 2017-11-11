@@ -5,6 +5,8 @@ import (
 	"gloo-server/models"
 	"log"
 	"os"
+
+	"github.com/jinzhu/gorm"
 )
 
 // SQLConnection is type of connection
@@ -39,7 +41,7 @@ func init() {
 }
 
 // GetConnection return service whith connection to sql database
-func (c *SQLConnection) GetConnection() *models.Database {
+func (c *SQLConnection) GetConnection() *gorm.DB {
 	var env string
 	switch os.Getenv("GLOO_ENV") {
 	case "dev":

@@ -6,7 +6,7 @@ import (
 
 // ServiceUser is a service of User
 type ServiceUser struct {
-	*Database
+	DB *gorm.DB
 }
 
 // User is struct of users
@@ -14,9 +14,9 @@ type User struct {
 	gorm.Model
 	FirstName string
 	LastName  string
-	Email     string `gorm:"not null"`
-	Role      Role
-	Opinions  []Opinion
+	Email     string    `gorm:"not null"`
+	Role      Role      `gorm:"ForeignKey:user_id"`
+	Opinions  []Opinion `gorm:"ForeignKey:user_id"`
 }
 
 // GetUsers find all User

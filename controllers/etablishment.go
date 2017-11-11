@@ -7,12 +7,15 @@ import (
 	"gloo-server/models"
 
 	"github.com/gin-gonic/gin"
+	"github.com/jinzhu/gorm"
 )
 
 // CtrlScopedEtablishment is initialize new Controller
-func CtrlScopedEtablishment(s *models.Database) *CtrlEtablsihment {
+func CtrlScopedEtablishment(db *gorm.DB) *CtrlEtablsihment {
 	return &CtrlEtablsihment{
-		Service: &models.ServiceEtablishment{s},
+		Service: &models.ServiceEtablishment{
+			DB: db,
+		},
 	}
 }
 

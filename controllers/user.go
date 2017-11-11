@@ -6,12 +6,15 @@ import (
 	"strconv"
 
 	"github.com/gin-gonic/gin"
+	"github.com/jinzhu/gorm"
 )
 
 // CtrlScopedUser is initialize new Controller
-func CtrlScopedUser(s *models.Database) *CtrlUser {
+func CtrlScopedUser(db *gorm.DB) *CtrlUser {
 	return &CtrlUser{
-		Service: &models.ServiceUser{s},
+		Service: &models.ServiceUser{
+			DB: db,
+		},
 	}
 }
 

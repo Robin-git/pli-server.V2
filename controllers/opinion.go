@@ -8,12 +8,15 @@ import (
 	"gloo-server/models"
 
 	"github.com/gin-gonic/gin"
+	"github.com/jinzhu/gorm"
 )
 
 // CtrlScopedOpinion is initialize new Controller
-func CtrlScopedOpinion(s *models.Database) *CtrlOpinion {
+func CtrlScopedOpinion(db *gorm.DB) *CtrlOpinion {
 	return &CtrlOpinion{
-		Service: &models.ServiceOpinion{s},
+		Service: &models.ServiceOpinion{
+			DB: db,
+		},
 	}
 }
 
