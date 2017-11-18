@@ -1,27 +1,5 @@
+const mysql = require('./db.js')
 const https = require('https')
-const mysql = require('mysql')
-
-// LOCALHOST
-// const con = mysql.createConnection({
-//     host: "localhost",
-//     user: "root",
-//     password: ""
-//     database: "gloo_rec"
-// })
-
-// AZURE
-const con = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "", 
-    port: 3306,
-    database: "gloo_dev"
-})
-
-con.connect((err) => {
-    if (err) throw err;
-    console.log("Connected to BDD!");
-})
 
 const KEY = `&key=AIzaSyA8sitcs9Rb43DfwWt775u9Pz_F2gYFZas`
 const DEFAULT = `query=bars+in+Ivry${KEY}`
@@ -62,7 +40,7 @@ function recurseCall(start = DEFAULT_URL) {
 
                 // INSERT 
                 var sql = `INSERT INTO etablishment (name, x, y, postal_code, city, street) VALUES ?`;
-                con.query(sql, [record], (err, result) => {
+                mysql.query(sql, [record], (err, result) => {
                     if (err) console.log(err);
                 });
 
