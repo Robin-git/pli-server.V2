@@ -20,6 +20,9 @@ func InitMariaDB(c string) *gorm.DB {
 		&Role{},
 		&Etablishment{},
 		&Opinion{},
+		&Event{},
+		&Item{},
+		&Suggestion{},
 	)
 	return db
 }
