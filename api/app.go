@@ -22,6 +22,7 @@ func NewRouter() *gin.Engine {
 	etablishmentCtrl := controllers.CtrlScopedEtablishment(db)
 	userCtrl := controllers.CtrlScopedUser(db)
 	opinionCtrl := controllers.CtrlScopedOpinion(db)
+	itemCtrl := controllers.CtrlScopedItem(db)
 
 	r := gin.Default()
 
@@ -35,6 +36,11 @@ func NewRouter() *gin.Engine {
 
 	r.GET("/api/opinion", opinionCtrl.HandlerGetOpinions)
 	r.POST("/api/opinion", opinionCtrl.HandlerPostOpinion)
+
+	r.GET("/api/item", itemCtrl.HandlerGetItems)
+	r.GET("/api/item/:id", itemCtrl.HandlerGetItem)
+	r.POST("/api/item", itemCtrl.HandlerPostItem)
+	r.PUT("/api/item/:id", itemCtrl.HandlePutItem)
 
 	return r
 }
