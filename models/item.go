@@ -1,6 +1,8 @@
 package models
 
 import (
+	"time"
+
 	"github.com/jinzhu/gorm"
 )
 
@@ -11,10 +13,12 @@ type ServiceItem struct {
 
 //Item (id, name, price, description)
 type Item struct {
-	gorm.Model
-	Name        string  `gorm:"not null" binding:"required" json:"name"`
-	Price       float64 `gorm:"not null" binding:"required" json:"price"`
-	Description string  `gorm:"not null" binding:"required" json:"description"`
+	ID          uint      `gorm:"primary_key" json:"id"`
+	CreatedAt   time.Time `json:"created_at"`
+	UpdatedAt   time.Time `json:"updated_at"`
+	Name        string    `gorm:"not null" binding:"required" json:"name"`
+	Price       float64   `gorm:"not null" binding:"required" json:"price"`
+	Description string    `gorm:"not null" binding:"required" json:"description"`
 }
 
 // Items is list of Item

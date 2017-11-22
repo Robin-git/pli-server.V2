@@ -1,6 +1,8 @@
 package models
 
 import (
+	"time"
+
 	"github.com/jinzhu/gorm"
 )
 
@@ -11,12 +13,14 @@ type ServiceUser struct {
 
 // User is struct of users
 type User struct {
-	gorm.Model
-	FirstName string
-	LastName  string
-	Email     string     `gorm:"not null"`
-	Role      *Role      `gorm:"ForeignKey:user_id"`
-	Opinions  []*Opinion `gorm:"ForeignKey:user_id"`
+	ID        uint       `gorm:"primary_key" json:"id"`
+	CreatedAt time.Time  `json:"created_at"`
+	UpdatedAt time.Time  `json:"updated_at"`
+	FirstName string     `json:"first_name"`
+	LastName  string     `json:"last_name"`
+	Email     string     `gorm:"not null" json:"email"`
+	Role      *Role      `gorm:"ForeignKey:user_id" json:"role"`
+	Opinions  []*Opinion `gorm:"ForeignKey:user_id" json:"opinions"`
 }
 
 // GetUsers find all User
