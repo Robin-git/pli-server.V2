@@ -1,6 +1,10 @@
 package models
 
-import "github.com/jinzhu/gorm"
+import (
+	"time"
+
+	"github.com/jinzhu/gorm"
+)
 
 // ServiceOpinion is a service of Opinion
 type ServiceOpinion struct {
@@ -9,11 +13,13 @@ type ServiceOpinion struct {
 
 //Opinion (id, User.id, Etablishment.id, *note*, *comment*, date)
 type Opinion struct {
-	gorm.Model
-	Comment        string
-	Note           int
-	EtablishmentID uint `gorm:"not null" binding:"required"`
-	UserID         uint `gorm:"not null" binding:"required"`
+	ID             uint      `gorm:"primary_key" json:"id"`
+	CreatedAt      time.Time `json:"created_at"`
+	UpdatedAt      time.Time `json:"updated_at"`
+	Comment        string    `json:"comment"`
+	Note           int       `json:"note"`
+	EtablishmentID uint      `gorm:"not null" binding:"required" json:"etablishment_id"`
+	UserID         uint      `gorm:"not null" binding:"required" json:"user_id"`
 }
 
 // Opinions is list of Opinion

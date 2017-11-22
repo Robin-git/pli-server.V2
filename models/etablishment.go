@@ -1,6 +1,8 @@
 package models
 
 import (
+	"time"
+
 	"github.com/jinzhu/gorm"
 )
 
@@ -11,16 +13,18 @@ type ServiceEtablishment struct {
 
 // Etablishment structure
 type Etablishment struct {
-	gorm.Model
-	Name        string    `gorm:"not null"`
-	X           float64   `gorm:"not null"`
-	Y           float64   `gorm:"not null"`
-	PhoneNumber string    `gorm:"type:varchar(15)"`
-	Email       string    `gorm:"type:varchar(256)"`
-	PostalCode  string    `gorm:"type:varchar(10); not null"`
-	City        string    `gorm:"type:varchar(256); not null"`
-	Street      string    `gorm:"type:varchar(256); not null"`
-	Opinions    []Opinion `gorm:"ForeignKey:etablishment_id"`
+	ID          uint      `gorm:"primary_key" json:"id"`
+	CreatedAt   time.Time `json:"created_at"`
+	UpdatedAt   time.Time `json:"updated_at"`
+	Name        string    `gorm:"not null" json:"name"`
+	X           float64   `gorm:"not null" json:"x"`
+	Y           float64   `gorm:"not null" json:"y"`
+	PhoneNumber string    `gorm:"type:varchar(15)" json:"phone_number"`
+	Email       string    `gorm:"type:varchar(256)" json:"email"`
+	PostalCode  string    `gorm:"type:varchar(10); not null" json:"postal_code"`
+	City        string    `gorm:"type:varchar(256); not null" json:"city"`
+	Street      string    `gorm:"type:varchar(256); not null" json:"street"`
+	Opinions    []Opinion `gorm:"ForeignKey:etablishment_id" json:"opinions"`
 }
 
 // Etablishments is list of Etablishment
@@ -30,7 +34,7 @@ type Etablishments []Etablishment
 // - NoteAverage
 type EtablishmentExtended struct {
 	Etablishment
-	NoteAverage float64
+	NoteAverage float64 `json:"user_id"`
 }
 
 // EtablishmentExtendeds is list of EtablishmentExtended

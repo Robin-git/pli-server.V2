@@ -1,10 +1,12 @@
 package models
 
-import "github.com/jinzhu/gorm"
+import "time"
 
 // Role is struct of Role
 type Role struct {
-	gorm.Model
-	Value  string `gorm:"not null"`
-	UserID uint
+	ID        uint      `gorm:"primary_key" json:"id"`
+	CreatedAt time.Time `json:"created_at"`
+	UpdatedAt time.Time `json:"updated_at"`
+	Value     string    `gorm:"not null" json:"value"`
+	UserID    uint      `json:"user_id"`
 }
