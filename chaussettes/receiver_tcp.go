@@ -60,11 +60,7 @@ func pushToEtablishment(msg string, r *redis.Client) {
 		log.Println("id of etablishment is not a number")
 		return
 	}
-	uid, err := strconv.Atoi(req[1])
-	if err != nil {
-		log.Println("id of user is not a number")
-		return
-	}
+	uid := req[1]
 	// exemple: etablishment:101 : { 1, 2 }
 	r.SAdd(fmt.Sprint("etablishment:", eid), uid).Result()
 }

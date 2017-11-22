@@ -5,15 +5,14 @@ import (
 	"fmt"
 	"log"
 	"net"
-	"strconv"
 	"strings"
 
 	"github.com/go-redis/redis"
 )
 
 type etablishment struct {
-	ID    int   `json:"id"`
-	Value int64 `json:"value"`
+	ID    string `json:"id"`
+	Value int64  `json:"value"`
 }
 
 // LauchUDPServer lauch a udp connection
@@ -48,10 +47,7 @@ func handlerUDP(conn *net.UDPConn, r *redis.Client) {
 		for _, id := range idl {
 			e := &etablishment{}
 			log.Println(id)
-			e.ID, err = strconv.Atoi(id)
-			if err != nil {
-				log.Println("Error in convert id")
-			}
+			e.ID = id
 			query := fmt.Sprint("etablishment:" + id)
 			e.Value, err = r.SCard(query).Result()
 			if err != nil {
