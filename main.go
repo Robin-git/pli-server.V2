@@ -14,8 +14,8 @@ func main() {
 	log.Println("API server starting")
 	redis := redis.NewClient()
 
+	go chaussettes.LauchTCPServerReceiver(redis)
 	go chaussettes.LauchUDPServer(redis)
-	go chaussettes.LauchTCPServer(redis)
 
 	// Server for analyse performance
 	// go http.ListenAndServe(":8080", http.DefaultServeMux)
