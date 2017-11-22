@@ -48,6 +48,10 @@ func pushToEtablishment(msg string, r *redis.Client) {
 	// req[0] contain etablishment id
 	// req[1] contain user id
 	req := strings.Split(msg, reqParser)
+	if len(req) != 2 {
+		log.Println("Message is malformed")
+		return
+	}
 	// exemple: etablishment:101 : { 1, 2 }
 	r.SAdd("etablishment:"+req[0], req[1]).Result()
 }
