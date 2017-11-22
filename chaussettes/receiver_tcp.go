@@ -1,8 +1,10 @@
 package chaussettes
 
 import (
+	"fmt"
 	"log"
 	"net"
+	"strconv"
 	"strings"
 
 	"github.com/go-redis/redis"
@@ -47,11 +49,22 @@ func receiverHandler(l *net.TCPListener, r *redis.Client) {
 func pushToEtablishment(msg string, r *redis.Client) {
 	// req[0] contain etablishment id
 	// req[1] contain user id
+	msg = strings.Replace(msg, "\n", "", -1)
 	req := strings.Split(msg, reqParser)
 	if len(req) != 2 {
 		log.Println("Message is malformed")
 		return
 	}
+	eid, err := strconv.Atoi(req[0])
+	if err != nil {
+		log.Println("id of etablishment is not a number")
+		return
+	}
+	uid, err := strconv.Atoi(req[1])
+	if err != nil {
+		log.Println("id of user is not a number")
+		return
+	}
 	// exemple: etablishment:101 : { 1, 2 }
-	r.SAdd("etablishment:"+req[0], req[1]).Result()
+	r.SAdd(fmt.Sprint("etablishment:", eid), uid).Result()
 }
