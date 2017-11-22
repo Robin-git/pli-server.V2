@@ -31,8 +31,7 @@ func receiverHandler(l *net.TCPListener, r *redis.Client) {
 		// Read the incoming connection into the buffer.
 		b, err := conn.Read(buf)
 		if err != nil {
-			log.Fatal(err)
-			continue
+			log.Println(err)
 		}
 		// Convert byte to string
 		msg := string(buf[:b])

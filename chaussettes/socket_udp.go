@@ -47,17 +47,21 @@ func handlerUDP(conn *net.UDPConn, r *redis.Client) {
 		idl := strings.Split(stringbuffer, ",")
 		for _, id := range idl {
 			e := &etablishment{}
+			log.Println(id)
 			e.ID, err = strconv.Atoi(id)
 			if err != nil {
 				log.Println("Error in convert id")
 			}
-			e.Value, err = r.SCard(fmt.Sprint("etablishment:" + id)).Result()
+			query := fmt.Sprint("etablishment:" + id)
+			e.Value, err = r.SCard(query).Result()
 			if err != nil {
 				log.Println("Error get data from redis")
+				log.Println(query)
 			}
 			result = append(result, e)
 		}
 		bit, _ = json.Marshal(result)
+		log.Println("Send data to ", addr)
 		conn.WriteToUDP(bit, addr)
 
 		if err != nil {
