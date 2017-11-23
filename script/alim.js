@@ -2,7 +2,7 @@ const mysql = require('./db.js')
 const https = require('https')
 
 const KEY = `&key=AIzaSyA8sitcs9Rb43DfwWt775u9Pz_F2gYFZas`
-const DEFAULT = `query=bars+in+Ivry${KEY}`
+const DEFAULT = `query=bars+in+Chartres${KEY}`
 const URL = `https://maps.googleapis.com/maps/api/place/textsearch/json?`
 const DEFAULT_URL = `${URL}${DEFAULT}`
 
