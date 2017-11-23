@@ -49,6 +49,7 @@ func NewRouter() *gin.Engine {
 		api.GET("/item/:id", itemCtrl.HandlerGetItem)
 		api.POST("/item", itemCtrl.HandlerPostItem)
 		api.PUT("/item/:id", itemCtrl.HandlePutItem)
+		api.DELETE("/item/:id", itemCtrl.HandlerDeleteItem)
 
 		// Event
 		api.GET("/event", eventCtrl.HandlerGetEvents)
@@ -61,6 +62,7 @@ func NewRouter() *gin.Engine {
 		api.GET("/suggestion/:id", suggestionCtrl.HandlerGetSuggestion)
 		api.POST("/suggestion", suggestionCtrl.HandlerPostSuggestion)
 		api.PUT("/suggestion/:id", suggestionCtrl.HandlePutSuggestion)
+		api.DELETE("/suggestion/:id", suggestionCtrl.HandlerDeleteSuggestion)
 	}
 
 	return r

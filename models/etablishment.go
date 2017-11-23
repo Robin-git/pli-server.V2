@@ -35,7 +35,7 @@ type Etablishments []Etablishment
 // - NoteAverage
 type EtablishmentExtended struct {
 	Etablishment
-	NoteAverage float64 `json:"user_id"`
+	NoteAverage float64 `json:"note_average"`
 }
 
 // EtablishmentExtendeds is list of EtablishmentExtended
@@ -67,7 +67,7 @@ func (s *ServiceEtablishment) GetEtablishment(id int) (*Etablishment, error) {
 }
 
 // GetDistanceEtablishment return distance from position user and etablishment x and y
-func (s *ServiceEtablishment) GetDistanceEtablishment(x, y, dist float64) (*Etablishments, error) {
+func (s *ServiceEtablishment) GetDistanceEtablishment(x, y, dist float64) (*EtablishmentExtendeds, error) {
 	etablishments := &Etablishments{}
 	var (
 		query = `select * 
@@ -76,8 +76,21 @@ func (s *ServiceEtablishment) GetDistanceEtablishment(x, y, dist float64) (*Etab
 			from etablishment 
 		) as result where distance < ? order by distance`
 	)
-	return etablishments,
-		s.DB.Raw(query, x, y, dist).Scan(etablishments).Error
+	err := s.DB.Raw(query, x, y, dist).Scan(etablishments).Error
+	if err != nil {
+		return nil, err
+	}
+	result := &EtablishmentExtendeds{}
+	for _, e := range *etablishments {
+		id := int(e.ID)
+		noteAverage, _ := s.GetAverageNoteEtablishment(id)
+		r := &EtablishmentExtended{
+			e,
+			noteAverage.Note,
+		}
+		*result = append(*result, *r)
+	}
+	return result, nil
 }
 
 // SearchEtablishmentByName search etablishment by name

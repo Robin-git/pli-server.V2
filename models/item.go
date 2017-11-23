@@ -17,7 +17,7 @@ type Item struct {
 	CreatedAt      time.Time `json:"created_at"`
 	UpdatedAt      time.Time `json:"updated_at"`
 	Name           string    `gorm:"not null" binding:"required" json:"name"`
-	Price          float64   `gorm:"not null" binding:"required" json:"price"`
+	Price          float64   `gorm:"null" binding:"required" json:"price"`
 	Description    string    `gorm:"not null" binding:"required" json:"description"`
 	EtablishmentID uint      `gorm:"index:etablishment_id" json:"etablishment_id"`
 }
@@ -28,7 +28,7 @@ type Items []*Item
 // GetItems get all item
 func (s *ServiceItem) GetItems(idEtablishment uint) (*Items, error) {
 	items := &Items{}
-	return items, s.DB.Where(&Item{EtablishmentID: idEtablishment}).Find(items).Error
+	return items, s.DB.Where(&Item{EtablishmentID: idEtablishment}).Not("price = ?", -1).Find(items).Error
 }
 
 // GetItem get one item
@@ -48,4 +48,9 @@ func (s *ServiceItem) UpdateItem(item *Item, itemUpdated *Item) error {
 	item.Price = itemUpdated.Price
 	item.Description = itemUpdated.Description
 	return s.DB.Save(item).Error
+}
+
+// DeleteItem delete one item
+func (s *ServiceItem) DeleteItem(id uint) error {
+	return s.DB.Delete(Item{}, "id = ?", id).Error
 }

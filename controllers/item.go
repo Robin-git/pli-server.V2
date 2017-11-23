@@ -103,3 +103,19 @@ func (ctr *CtrlItem) HandlePutItem(c *gin.Context) {
 	// Return OK
 	c.JSON(http.StatusOK, gin.H{HResult: item})
 }
+
+// HandlerDeleteItem delete one Suggestion
+// Params { id }
+func (ctr *CtrlItem) HandlerDeleteItem(c *gin.Context) {
+	id, err := strconv.Atoi(c.Param("id"))
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{HError: err.Error()})
+		return
+	}
+	err = ctr.Service.DeleteItem(uint(id))
+	if err != nil {
+		c.JSON(http.StatusNotFound, gin.H{HError: err.Error()})
+		return
+	}
+	c.JSON(http.StatusOK, gin.H{HResult: "OK"})
+}

@@ -18,9 +18,9 @@ type Suggestion struct {
 	UpdatedAt time.Time `json:"updated_at"`
 	// Name           string        `gorm:"not null" binding:"required" json:"name"`
 	// Price          int           `gorm:"not null" binding:"required" json:"price"`
-	EtablishmentID int           `gorm:"not null" json:"etablishment_id"`
-	UserID         int           `gorm:"not null" json:"user_id"`
-	ItemID         int           `gorm:"not null" json:"item_id"`
+	EtablishmentID uint          `gorm:"not null" json:"etablishment_id"`
+	UserID         uint          `gorm:"not null" json:"user_id"`
+	ItemID         uint          `gorm:"null" json:"item_id"`
 	Etablishment   *Etablishment `gorm:"ForeignKey:etablishment_id" json:"etablishment"`
 	User           *User         `gorm:"ForeignKey:user_id" json:"user"`
 	Item           *Item         `gorm:"ForeignKey:item_id" json:"item"`
@@ -31,27 +31,27 @@ type Suggestions []*Suggestion
 
 // QueryParameterSuggestion is list of possible parameter
 type QueryParameterSuggestion struct {
-	WEtablishment bool
-	WUser         bool
-	WItem         bool
+	Etablishment bool
+	User         bool
+	Item         bool
 }
 
 func buildQueryWithEtablishment(db *gorm.DB, qp *QueryParameterSuggestion) *gorm.DB {
-	if qp.WEtablishment {
+	if qp.Etablishment {
 		return db.Preload("Etablishment")
 	}
 	return db
 }
 
 func buildQueryWithUser(db *gorm.DB, qp *QueryParameterSuggestion) *gorm.DB {
-	if qp.WUser {
+	if qp.User {
 		return db.Preload("User")
 	}
 	return db
 }
 
 func buildQueryWithItem(db *gorm.DB, qp *QueryParameterSuggestion) *gorm.DB {
-	if qp.WItem {
+	if qp.Item {
 		return db.Preload("Item")
 	}
 	return db
@@ -65,10 +65,10 @@ func buildQueryWithParam(db *gorm.DB, qp *QueryParameterSuggestion) *gorm.DB {
 }
 
 // GetSuggestions get all event
-func (s *ServiceSuggestion) GetSuggestions(qp *QueryParameterSuggestion) (*Suggestions, error) {
+func (s *ServiceSuggestion) GetSuggestions(qp *QueryParameterSuggestion, etablishmentID uint) (*Suggestions, error) {
 	sg := &Suggestions{}
 	db := buildQueryWithParam(s.DB, qp)
-	return sg, db.Find(sg).Error
+	return sg, db.Where(&Suggestion{EtablishmentID: etablishmentID}).Find(sg).Error
 }
 
 // GetSuggestion get one suggestion by id
@@ -79,8 +79,29 @@ func (s *ServiceSuggestion) GetSuggestion(id int, qp *QueryParameterSuggestion) 
 }
 
 // PostSuggestion post one suggestion
-func (s *ServiceSuggestion) PostSuggestion(sg *Suggestion) error {
-	return s.DB.Create(sg).Error
+func (s *ServiceSuggestion) PostSuggestion(body struct {
+	Name           string `json:"name" binding:"required"`
+	Description    string `json:"description" binding:"required"`
+	EtablishmentID uint   `json:"etablishment_id" binding:"required"`
+	UserID         uint   `json:"user_id" binding:"required"`
+}) error {
+	item := &Item{}
+	suggestion := &Suggestion{}
+
+	item.Price = -1
+	item.Name = body.Name
+	item.Description = body.Description
+	item.EtablishmentID = body.EtablishmentID
+
+	suggestion.EtablishmentID = body.EtablishmentID
+	suggestion.UserID = body.UserID
+
+	err := s.DB.Create(item).Error
+	if err != nil {
+		return err
+	}
+	suggestion.ItemID = item.ID
+	return s.DB.Create(suggestion).Error
 }
 
 // UpdateSuggestion update one suggestion
@@ -91,4 +112,9 @@ func (s *ServiceSuggestion) UpdateSuggestion(sg *Suggestion, sgUpdated *Suggesti
 	sg.User = sgUpdated.User
 	sg.Item = sgUpdated.Item
 	return s.DB.Save(sg).Error
+}
+
+// DeleteSuggestion delete one suggestion
+func (s *ServiceSuggestion) DeleteSuggestion(id uint) error {
+	return s.DB.Delete(Suggestion{}, "id = ?", id).Error
 }
