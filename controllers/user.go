@@ -3,7 +3,6 @@ package controllers
 import (
 	"gloo-server/models"
 	"net/http"
-	"strconv"
 
 	"github.com/gin-gonic/gin"
 	"github.com/jinzhu/gorm"
@@ -40,17 +39,12 @@ func (ctr *CtrlUser) HandlerGetUsers(c *gin.Context) {
 // HandlerGetUser return one user
 func (ctr *CtrlUser) HandlerGetUser(c *gin.Context) {
 	id := c.Param("id")
-	if id, err := strconv.Atoi(id); err == nil {
-		user, err := ctr.Service.GetUser(id)
-		if err != nil {
-			c.JSON(http.StatusNotFound, gin.H{HError: err.Error()})
-			return
-		}
-		c.JSON(http.StatusOK, gin.H{HResult: user})
-	} else {
-		c.JSON(http.StatusBadRequest, gin.H{HError: "bad arguments"})
+	user, err := ctr.Service.GetUser(id)
+	if err != nil {
+		c.JSON(http.StatusNotFound, gin.H{HError: err.Error()})
 		return
 	}
+	c.JSON(http.StatusOK, gin.H{HResult: user})
 }
 
 // HandlerAddUser post a new User
