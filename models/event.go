@@ -32,12 +32,12 @@ type QueryParameterEvent struct {
 }
 
 // GetEvents get all event
-func (s *ServiceEvent) GetEvents(q *QueryParameterEvent) (*Events, error) {
+func (s *ServiceEvent) GetEvents(q *QueryParameterEvent, idEtablishment uint) (*Events, error) {
 	events := &Events{}
 	if q.Wetablishment {
-		return events, s.DB.Preload("Etablishment").Find(events).Error
+		return events, s.DB.Where(&Event{EtablishmentID: idEtablishment}).Preload("Etablishment").Find(events).Error
 	}
-	return events, s.DB.Find(events).Error
+	return events, s.DB.Where(&Event{EtablishmentID: idEtablishment}).Find(events).Error
 }
 
 // GetEvent get one event by id
