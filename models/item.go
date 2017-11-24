@@ -47,6 +47,7 @@ func (s *ServiceItem) UpdateItem(item *Item, itemUpdated *Item) error {
 	item.Name = itemUpdated.Name
 	item.Price = itemUpdated.Price
 	item.Description = itemUpdated.Description
+	item.EtablishmentID = itemUpdated.EtablishmentID
 	return s.DB.Save(item).Error
 }
 
