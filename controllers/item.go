@@ -41,7 +41,17 @@ func (ctr *CtrlItem) HandlerGetItem(c *gin.Context) {
 
 // HandlerGetItems return all Item
 func (ctr *CtrlItem) HandlerGetItems(c *gin.Context) {
-	items, err := ctr.Service.GetItems()
+	id := c.Query("id_etablishment")
+	if id == "" {
+		c.JSON(http.StatusBadRequest, gin.H{HError: "id_etablishment is required"})
+		return
+	}
+	idconv, err := strconv.Atoi(id)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{HError: "id_etablishment is malformed"})
+		return
+	}
+	items, err := ctr.Service.GetItems(uint(idconv))
 	if err != nil {
 		c.JSON(http.StatusNotFound, gin.H{HError: err.Error()})
 		return
@@ -92,4 +102,20 @@ func (ctr *CtrlItem) HandlePutItem(c *gin.Context) {
 	}
 	// Return OK
 	c.JSON(http.StatusOK, gin.H{HResult: item})
+}
+
+// HandlerDeleteItem delete one Suggestion
+// Params { id }
+func (ctr *CtrlItem) HandlerDeleteItem(c *gin.Context) {
+	id, err := strconv.Atoi(c.Param("id"))
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{HError: err.Error()})
+		return
+	}
+	err = ctr.Service.DeleteItem(uint(id))
+	if err != nil {
+		c.JSON(http.StatusNotFound, gin.H{HError: err.Error()})
+		return
+	}
+	c.JSON(http.StatusOK, gin.H{HResult: "OK"})
 }

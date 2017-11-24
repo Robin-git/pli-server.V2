@@ -13,18 +13,19 @@ type ServiceEtablishment struct {
 
 // Etablishment structure
 type Etablishment struct {
-	ID          uint      `gorm:"primary_key" json:"id"`
-	CreatedAt   time.Time `json:"created_at"`
-	UpdatedAt   time.Time `json:"updated_at"`
-	Name        string    `gorm:"not null" json:"name"`
-	X           float64   `gorm:"not null" json:"x"`
-	Y           float64   `gorm:"not null" json:"y"`
-	PhoneNumber string    `gorm:"type:varchar(15)" json:"phone_number"`
-	Email       string    `gorm:"type:varchar(256)" json:"email"`
-	PostalCode  string    `gorm:"type:varchar(10); not null" json:"postal_code"`
-	City        string    `gorm:"type:varchar(256); not null" json:"city"`
-	Street      string    `gorm:"type:varchar(256); not null" json:"street"`
-	Opinions    []Opinion `gorm:"ForeignKey:etablishment_id" json:"opinions"`
+	ID          uint       `gorm:"primary_key" json:"id"`
+	CreatedAt   time.Time  `json:"created_at"`
+	UpdatedAt   time.Time  `json:"updated_at"`
+	Name        string     `gorm:"not null" json:"name"`
+	X           float64    `gorm:"not null" json:"x"`
+	Y           float64    `gorm:"not null" json:"y"`
+	PhoneNumber string     `gorm:"type:varchar(15)" json:"phone_number"`
+	Email       string     `gorm:"type:varchar(256)" json:"email"`
+	PostalCode  string     `gorm:"type:varchar(10); not null" json:"postal_code"`
+	City        string     `gorm:"type:varchar(256); not null" json:"city"`
+	Street      string     `gorm:"type:varchar(256); not null" json:"street"`
+	Opinions    []*Opinion `gorm:"ForeignKey:etablishment_id" json:"opinions"`
+	Items       []*Item    `gorm:"ForeignKey:etablishment_id" json:"items"`
 }
 
 // Etablishments is list of Etablishment
@@ -34,7 +35,7 @@ type Etablishments []Etablishment
 // - NoteAverage
 type EtablishmentExtended struct {
 	Etablishment
-	NoteAverage float64 `json:"user_id"`
+	NoteAverage float64 `json:"note_average"`
 }
 
 // EtablishmentExtendeds is list of EtablishmentExtended
@@ -44,7 +45,7 @@ type EtablishmentExtendeds []EtablishmentExtended
 func (s *ServiceEtablishment) GetEtablishments() (interface{}, error) {
 	result := &EtablishmentExtendeds{}
 	etablishments := &Etablishments{}
-	if err := s.DB.Preload("Opinions").Find(&etablishments).Error; err != nil {
+	if err := s.DB.Preload("Opinions").Preload("Items").Find(&etablishments).Error; err != nil {
 		return result, err
 	}
 	for _, e := range *etablishments {
@@ -62,11 +63,11 @@ func (s *ServiceEtablishment) GetEtablishments() (interface{}, error) {
 // GetEtablishment return one etablishment
 func (s *ServiceEtablishment) GetEtablishment(id int) (*Etablishment, error) {
 	etablishment := &Etablishment{}
-	return etablishment, s.DB.Preload("Opinions").First(etablishment, id).Error
+	return etablishment, s.DB.Preload("Opinions").Preload("Items").First(etablishment, id).Error
 }
 
 // GetDistanceEtablishment return distance from position user and etablishment x and y
-func (s *ServiceEtablishment) GetDistanceEtablishment(x, y, dist float64) (*Etablishments, error) {
+func (s *ServiceEtablishment) GetDistanceEtablishment(x, y, dist float64) (*EtablishmentExtendeds, error) {
 	etablishments := &Etablishments{}
 	var (
 		query = `select * 
@@ -75,8 +76,21 @@ func (s *ServiceEtablishment) GetDistanceEtablishment(x, y, dist float64) (*Etab
 			from etablishment 
 		) as result where distance < ? order by distance`
 	)
-	return etablishments,
-		s.DB.Raw(query, x, y, dist).Scan(etablishments).Error
+	err := s.DB.Raw(query, x, y, dist).Scan(etablishments).Error
+	if err != nil {
+		return nil, err
+	}
+	result := &EtablishmentExtendeds{}
+	for _, e := range *etablishments {
+		id := int(e.ID)
+		noteAverage, _ := s.GetAverageNoteEtablishment(id)
+		r := &EtablishmentExtended{
+			e,
+			noteAverage.Note,
+		}
+		*result = append(*result, *r)
+	}
+	return result, nil
 }
 
 // SearchEtablishmentByName search etablishment by name

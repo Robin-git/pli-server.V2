@@ -13,7 +13,7 @@ type ServiceUser struct {
 
 // User is struct of users
 type User struct {
-	ID        uint       `gorm:"primary_key" json:"id"`
+	ID        string     `gorm:"primary_key" json:"id"`
 	CreatedAt time.Time  `json:"created_at"`
 	UpdatedAt time.Time  `json:"updated_at"`
 	FirstName string     `json:"first_name"`
@@ -34,7 +34,7 @@ func (s *ServiceUser) GetUsers() ([]User, error) {
 }
 
 // GetUser find one User
-func (s *ServiceUser) GetUser(id int) (User, error) {
+func (s *ServiceUser) GetUser(id string) (User, error) {
 	var user User
 	err := s.DB.First(&user, id).Error
 	if err != nil {

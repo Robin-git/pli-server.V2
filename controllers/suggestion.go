@@ -32,11 +32,11 @@ func buildQueryParameter(c *gin.Context) *models.QueryParameterSuggestion {
 	for _, param := range paramlist {
 		switch param {
 		case "etablishment":
-			qp.WEtablishment = true
+			qp.Etablishment = true
 		case "user":
-			qp.WUser = true
+			qp.User = true
 		case "item":
-			qp.WItem = true
+			qp.Item = true
 		}
 	}
 	return qp
@@ -62,7 +62,17 @@ func (ctr *CtrlSuggestion) HandlerGetSuggestion(c *gin.Context) {
 // HandlerGetSuggestions return all Suggestion
 func (ctr *CtrlSuggestion) HandlerGetSuggestions(c *gin.Context) {
 	qp := buildQueryParameter(c)
-	suggestions, err := ctr.Service.GetSuggestions(qp)
+	queryID := c.Query("id_etablishment")
+	ide, err := strconv.Atoi(queryID)
+	if queryID == "" {
+		c.JSON(http.StatusBadRequest, gin.H{HError: "id_etablishment is required"})
+		return
+	}
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{HError: "id_etablishment bad format"})
+		return
+	}
+	suggestions, err := ctr.Service.GetSuggestions(qp, uint(ide))
 	if err != nil {
 		c.JSON(http.StatusNotFound, gin.H{HError: err.Error()})
 		return
@@ -73,7 +83,12 @@ func (ctr *CtrlSuggestion) HandlerGetSuggestions(c *gin.Context) {
 // HandlerPostSuggestion post one Suggestion
 // Query { Suggestion }
 func (ctr *CtrlSuggestion) HandlerPostSuggestion(c *gin.Context) {
-	var json *models.Suggestion
+	var json struct {
+		Name           string `json:"name" binding:"required"`
+		Description    string `json:"description" binding:"required"`
+		EtablishmentID uint   `json:"etablishment_id" binding:"required"`
+		UserID         uint   `json:"user_id" binding:"required"`
+	}
 	if err := c.BindJSON(&json); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{HError: http.StatusBadRequest})
 		return
@@ -114,4 +129,20 @@ func (ctr *CtrlSuggestion) HandlePutSuggestion(c *gin.Context) {
 	}
 	// Return OK
 	c.JSON(http.StatusOK, gin.H{HResult: suggestion})
+}
+
+// HandlerDeleteSuggestion delete one Suggestion
+// Params { id }
+func (ctr *CtrlSuggestion) HandlerDeleteSuggestion(c *gin.Context) {
+	id, err := strconv.Atoi(c.Param("id"))
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{HError: err.Error()})
+		return
+	}
+	err = ctr.Service.DeleteSuggestion(uint(id))
+	if err != nil {
+		c.JSON(http.StatusNotFound, gin.H{HError: err.Error()})
+		return
+	}
+	c.JSON(http.StatusOK, gin.H{HResult: "OK"})
 }
