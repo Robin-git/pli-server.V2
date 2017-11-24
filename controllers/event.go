@@ -53,7 +53,17 @@ func (ctr *CtrlEvent) HandlerGetEvents(c *gin.Context) {
 	if we == "etablishment" {
 		qp.Wetablishment = true
 	}
-	events, err := ctr.Service.GetEvents(qp)
+	id := c.Query("id_etablishment")
+	if id == "" {
+		c.JSON(http.StatusBadRequest, gin.H{HError: "id_etablishment is required"})
+		return
+	}
+	idconv, err := strconv.Atoi(id)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{HError: "id_etablishment is malformed"})
+		return
+	}
+	events, err := ctr.Service.GetEvents(qp, uint(idconv))
 	if err != nil {
 		c.JSON(http.StatusNotFound, gin.H{HError: err.Error()})
 		return
